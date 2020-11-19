@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/wod_detail_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp"
+        android:text="@string/wod1_name"
+        android:textAlignment="center"
+        android:textAppearance="?attr/textAppearanceHeadline3" />
+
+    <TextView
+        android:id="@+id/wod_detail_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textAlignment="center"
+        android:text="@string/wod1_type"
+        android:textSize="25dp"/>
+
+    <TextView
+        android:id="@+id/wod_detail_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:padding="16dp"
+        android:text="@string/wod1_description" />
+
+    <Button
+        android:id="@+id/remove_button"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/remove_this_wod" />
+</LinearLayout>

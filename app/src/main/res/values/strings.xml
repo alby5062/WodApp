@@ -1,0 +1,94 @@
+<resources>
+    <string name="app_name">WodApp</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="facebook_app_id">1379752609029605</string>
+    <string name="fb_login_protocol_scheme">fb1379752609029605</string>
+
+
+    <string name="menu_home">Home</string>
+    <string name="menu_wod">WOD</string>
+    <string name="menu_info">Info</string>
+    <string name="menu_history">History</string>
+
+    <string name="login_button">LOGIN</string>
+    <string name="signin_button">SIGN IN</string>
+    <string name="login_title">Login page</string>
+
+
+    <string name="wod1_name">Angie</string>
+    <string name="wod1_type">For Time</string>
+    <string name="wod1_description">100 Pull-up\n100 Push-Ups\n100 Sit-Ups\n100 Squats </string>
+
+    <string name="wod2_name">Barbara</string>
+    <string name="wod2_type">For Round</string>
+    <string name="wod2_description">5 Rounds:\n20 Pull-Ups\n30 Push-Ups\n40 Sit-Ups\n50 Squats\nRest 3 mins</string>
+
+    <string name="wod3_name">Diane</string>
+    <string name="wod3_type">For Time</string>
+    <string name="wod3_description">21 – 15 – 9 Rounds:\n225/155lb or 100/70kg Deadlift\nHandstand Push-Ups </string>
+
+    <string name="wod4_name">Cindy</string>
+    <string name="wod4_type">AMRAP</string>
+    <string name="wod4_description">20 mins:\n5 Pull-Ups\n10 Push-Ups\n15 Squats</string>
+
+    <string name="wod5_name">Fran</string>
+    <string name="wod5_type">For Time</string>
+    <string name="wod5_description">21 – 15 – 9 Rounds:\nThruster 95/65lb or 42.5/30kg\nPull-Ups</string>
+
+    <string name="wod6_name">Grace</string>
+    <string name="wod6_type">For Time</string>
+    <string name="wod6_description">30 Reps:\n60/42,5kg Clean &amp; Jerks\nTime cap 6 mins</string>
+
+    <string name="wod7_name">Helen</string>
+    <string name="wod7_type">For Time</string>
+    <string name="wod7_description">3 Rounds:\nRun 400m\n21 Kettlebell Swings (55/35lb or 24/16kg)\n12 Pull-Ups</string>
+
+
+    <string name="wod_string">Wods</string>
+    <string name="wod_finder">Wods finder</string>
+
+    <string name="wod_image_content_description">Image of wod</string>
+
+    <string name="fab_content_description">fab</string>
+
+    <string name="add_wod">Add wod</string>
+
+    <string name="wod_name_edit_text">Wod Name</string>
+    <string name="wod_type_edit_text">Wod Type</string>
+    <string name="wod_description_edit_text">Wod Description</string>
+
+    <string name="done_button_text">Done</string>
+
+    <string name="remove_this_wod">Remove this wod</string>
+
+    <string name="id_web_client">435631610850-3dq0dseonrinb6i2lq7d1ti1b3tj08ck.apps.googleusercontent.com</string>
+
+
+    <string name="facebook_status_fmt">Facebook User: %s</string>
+    <string name="facebook_title_text">Facebook Login</string>
+    <string name="todo">TODO</string>
+    <string name="email_login">Email</string>
+    <string name="password_login">Password</string>
+    <string name="logout">LOGOUT</string>
+    <string name="back_home">Torna alla home</string>
+    <string name="sign_up_page">Sign up page</string>
+    <string name="name_user">Name</string>
+    <string name="surname_user">Surname</string>
+    <string name="age_user">Age</string>
+    <string name="gender_user">Gender</string>
+    <string name="mail_user">E-mail</string>
+    <string name="pasword_user">Password</string>
+    <string name="button_sign_up">Done</string>
+
+    <string-array name="gender_spinner">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+</resources>

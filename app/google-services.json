@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "435631610850",
+    "firebase_url": "https://wodapp-fa887.firebaseio.com",
+    "project_id": "wodapp-fa887",
+    "storage_bucket": "wodapp-fa887.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:435631610850:android:9aa4a1a91823084ad0f7bb",
+        "android_client_info": {
+          "package_name": "it.alberto.wodapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "435631610850-3dq0dseonrinb6i2lq7d1ti1b3tj08ck.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "it.alberto.wodapp",
+            "certificate_hash": "70ced1b0ac86418753815f31837b6cf0626c11f9"
+          }
+        },
+        {
+          "client_id": "435631610850-ptj0ahr3loe4vtuae6c97tckq108ct6t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCI7oiMIx0OjK7DZuhjJUArvcf0J83dDEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "435631610850-ptj0ahr3loe4vtuae6c97tckq108ct6t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
