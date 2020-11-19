@@ -28,12 +28,14 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:main" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3cc8c173-d96b-4808-ba23-ea8f52f10e73" name="Default Changelist" comment="Inizialize project" />
+    <list default="true" id="3cc8c173-d96b-4808-ba23-ea8f52f10e73" name="Default Changelist" comment="Prova">
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_prova.xml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,8 +53,8 @@
         <option value="Class" />
         <option value="Kotlin File" />
         <option value="resourceFile" />
-        <option value="layoutResourceFile" />
         <option value="Kotlin Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -81,7 +83,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1k6dsOawCbPGyW1gfKN9yRdxlKs" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -250,7 +254,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605811710258</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Prova">
+      <created>1605813823446</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605813823446</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -264,7 +275,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -278,7 +289,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Inizialize project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Inizialize project" />
+    <MESSAGE value="Prova" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prova" />
   </component>
   <component name="WindowStateProjectService">
     <state x="530" y="221" key="#Inspections" timestamp="1605186837862">
@@ -328,11 +340,12 @@
       <screen x="0" y="25" width="1792" height="1019" />
     </state>
     <state x="484" y="293" key="AndroidCreateResourceDirectoryDialog/0.25.1792.1019@0.25.1792.1019" timestamp="1605739972145" />
-    <state x="484" y="298" key="AndroidCreateResourceFileDialog" timestamp="1605738834982">
-      <screen x="0" y="25" width="1792" height="1019" />
+    <state x="484" y="318" key="AndroidCreateResourceFileDialog" timestamp="1605813749082">
+      <screen x="0" y="25" width="1792" height="1095" />
     </state>
     <state x="484" y="298" key="AndroidCreateResourceFileDialog/0.23.1792.1026@0.23.1792.1026" timestamp="1605186285268" />
     <state x="484" y="298" key="AndroidCreateResourceFileDialog/0.25.1792.1019@0.25.1792.1019" timestamp="1605738834982" />
+    <state x="484" y="318" key="AndroidCreateResourceFileDialog/0.25.1792.1095@0.25.1792.1095" timestamp="1605813749082" />
     <state x="718" y="320" key="AndroidCreateXmlResourceDialog" timestamp="1605744039848">
       <screen x="0" y="25" width="1792" height="1019" />
     </state>
@@ -342,10 +355,14 @@
       <screen x="0" y="25" width="1792" height="1095" />
     </state>
     <state x="100" y="125" width="1592" height="895" key="DiffContextDialog/0.25.1792.1095@0.25.1792.1095" timestamp="1605811499684" />
-    <state x="766" y="473" width="530" height="292" key="Github.ShareDialog" timestamp="1605813435383">
+    <state x="766" y="473" width="530" height="292" key="Github.ShareDialog" timestamp="1605813577703">
       <screen x="0" y="25" width="1792" height="1095" />
     </state>
-    <state x="766" y="473" width="530" height="292" key="Github.ShareDialog/0.25.1792.1095@0.25.1792.1095" timestamp="1605813435383" />
+    <state x="766" y="473" width="530" height="292" key="Github.ShareDialog/0.25.1792.1095@0.25.1792.1095" timestamp="1605813577703" />
+    <state x="519" y="283" key="Github.UntrackedFilesDialog" timestamp="1605813587235">
+      <screen x="0" y="25" width="1792" height="1095" />
+    </state>
+    <state x="519" y="283" key="Github.UntrackedFilesDialog/0.25.1792.1095@0.25.1792.1095" timestamp="1605813587235" />
     <state width="1748" height="483" key="GridCell.Tab.0.bottom" timestamp="1605741964445">
       <screen x="0" y="25" width="1792" height="1019" />
     </state>
@@ -375,20 +392,20 @@
     </state>
     <state x="397" y="175" key="SettingsEditor/0.23.1792.1026@0.23.1792.1026" timestamp="1605202428346" />
     <state x="397" y="187" key="SettingsEditor/0.25.1792.1095@0.25.1792.1095" timestamp="1605813534313" />
-    <state x="496" y="309" key="Vcs.Push.Dialog.v2" timestamp="1605813122340">
+    <state x="496" y="309" key="Vcs.Push.Dialog.v2" timestamp="1605813806087">
       <screen x="0" y="25" width="1792" height="1095" />
     </state>
-    <state x="496" y="309" key="Vcs.Push.Dialog.v2/0.25.1792.1095@0.25.1792.1095" timestamp="1605813122340" />
+    <state x="496" y="309" key="Vcs.Push.Dialog.v2/0.25.1792.1095@0.25.1792.1095" timestamp="1605813806087" />
     <state x="673" y="321" key="chooseDestDirectoryDialog" timestamp="1605488966780">
       <screen x="0" y="25" width="1792" height="1020" />
     </state>
     <state x="673" y="321" key="chooseDestDirectoryDialog/0.23.1792.1026@0.23.1792.1026" timestamp="1605032409134" />
     <state x="673" y="321" key="chooseDestDirectoryDialog/0.25.1792.1019@0.25.1792.1019" timestamp="1605483087991" />
     <state x="673" y="321" key="chooseDestDirectoryDialog/0.25.1792.1020@0.25.1792.1020" timestamp="1605488966780" />
-    <state x="678" y="490" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605811196024">
+    <state x="678" y="490" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605813852208">
       <screen x="0" y="25" width="1792" height="1095" />
     </state>
-    <state x="678" y="490" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1792.1095@0.25.1792.1095" timestamp="1605811196024" />
+    <state x="678" y="490" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1792.1095@0.25.1792.1095" timestamp="1605813852208" />
     <state x="621" y="341" key="refactoring.ChangeSignatureDialog" timestamp="1605354833668">
       <screen x="0" y="25" width="1792" height="1019" />
     </state>
