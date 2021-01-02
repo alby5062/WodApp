@@ -1,0 +1,89 @@
+<resources>
+    <string name="app_name">WodApp</string>
+
+
+    <string name="action_settings">Settings</string>
+
+
+    <!-- GENERAL BUTTON -->
+    <string name="fab_content_description">fab</string>
+    <string name="done_button">Done</string>
+    <string name="back_home">Back Home</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <!-- LOGIN -->
+    <string name="login_button">login</string>
+    <string name="login_title">Login Page</string>
+    <string name="email_login">E-mail</string>
+    <string name="password_login">Password</string>
+    <string name="id_web_client">911248194391-v200bnos12tcr3hb3sa08afb8720kprt.apps.googleusercontent.com</string>
+
+    <!-- FACEBOOK LOGIN VECCHIA 1379752609029605-->
+    <string name="facebook_app_id">218870129668216</string>
+    <string name="fb_login_protocol_scheme">fb218870129668216</string>
+
+    <!-- SIGN UP -->
+    <string name="sign_up_name">Name</string>
+    <string name="sign_up_surname">Surname</string>
+    <string name="sign_up_age">Age</string>
+    <string name="sign_up_email">E-mail</string>
+    <string name="sign_up_password">Password</string>
+    <string name="sign_up_button">Sign-Up</string>
+    <string name="sign_up_page">Sign Up Page</string>
+    <string name="button_sign_up">Sign-Up</string>
+    <string-array name="gender_spinner">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <!-- LOGOUT -->
+    <string name="logout">Logout</string>
+
+    <!-- GENERAL WOD -->
+    <string name="add_wod">Add WOD</string>
+    <string name="wod_name">Wod Name</string>
+    <string name="wod_description">Wod Description</string>
+    <string name="wod_type">Wod Type</string>
+
+    <!-- BASE WOD ITEM -->
+    <string name="wod1_name">Angie</string>
+    <string name="wod1_type">For Time</string>
+    <string name="wod1_description">100 Pull-up\n100 Push-Ups\n100 Sit-Ups\n100 Squats </string>
+
+    <string name="wod2_name">Barbara</string>
+    <string name="wod2_type">For Round</string>
+    <string name="wod2_description">5 Rounds:\n20 Pull-Ups\n30 Push-Ups\n40 Sit-Ups\n50 Squats\nRest 3 mins</string>
+
+    <string name="wod3_name">Diane</string>
+    <string name="wod3_type">For Time</string>
+    <string name="wod3_description">21 – 15 – 9 Rounds:\n225/155lb or 100/70kg Deadlift\nHandstand Push-Ups </string>
+
+    <string name="wod4_name">Cindy</string>
+    <string name="wod4_type">AMRAP</string>
+    <string name="wod4_description">20 mins:\n5 Pull-Ups\n10 Push-Ups\n15 Squats</string>
+
+    <string name="wod5_name">Fran</string>
+    <string name="wod5_type">For Time</string>
+    <string name="wod5_description">21 – 15 – 9 Rounds:\nThruster 95/65lb or 42.5/30kg\nPull-Ups</string>
+
+    <string name="wod6_name">Grace</string>
+    <string name="wod6_type">For Time</string>
+    <string name="wod6_description">30 Reps:\n60/42,5kg Clean &amp; Jerks\nTime cap 6 mins</string>
+
+    <string name="wod7_name">Helen</string>
+    <string name="wod7_type">For Time</string>
+    <string name="wod7_description">3 Rounds:\nRun 400m\n21 Kettlebell Swings (55/35lb or 24/16kg)\n12 Pull-Ups</string>
+
+
+    <!-- FRAGMENT -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="empty_not_saved">Non salvato</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="todo">TODO</string>
+    <string name="selected_item">Selected item:</string>
+</resources>

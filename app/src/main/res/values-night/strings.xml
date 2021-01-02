@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_button">login</string>
+    <string name="add_wod">Add WOD</string>
+    <string name="selected_item">Selected item:</string>
+</resources>

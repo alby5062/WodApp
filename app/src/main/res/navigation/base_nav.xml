@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/base_nav"
+    app:startDestination="@id/listBaseWodFragment">
+    <fragment
+        android:id="@+id/listBaseWodFragment"
+        android:name="it.alberto.wodapp.Wod.BaseWod.fragments.list.ListBaseWodFragment"
+        android:label="Base WOD"
+        tools:layout="@layout/fragment_list_base_wod" >
+        <action
+            android:id="@+id/action_listBaseWodFragment_to_addUserWodFragment"
+            app:destination="@id/addUserWodFragment" />
+        <action
+            android:id="@+id/action_listBaseWodFragment_to_addBaseWodFragment"
+            app:destination="@id/addBaseWodFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addUserWodFragment"
+        android:name="it.alberto.wodapp.Wod.BaseWod.fragments.add.AddUserWodFragment"
+        android:label="Add WOD"
+        tools:layout="@layout/fragment_add_user_wod" />
+    <fragment
+        android:id="@+id/addBaseWodFragment"
+        android:name="it.alberto.wodapp.Wod.BaseWod.fragments.add.AddBaseWodFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_add_base_wod" >
+        <action
+            android:id="@+id/action_addBaseWodFragment_to_listBaseWodFragment"
+            app:destination="@id/listBaseWodFragment" />
+        <argument
+            android:name="currentUser"
+            app:argType="it.alberto.wodapp.Wod.BaseWod.data.BaseWod" />
+    </fragment>
+</navigation>
