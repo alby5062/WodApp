@@ -7,10 +7,9 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
-import it.alberto.wodapp.DatabaseProva.DatabaseActivity
+import it.alberto.wodapp.Login.DashboardActivity
 import it.alberto.wodapp.Login.Login
 import it.alberto.wodapp.Login.Logout
-import it.alberto.wodapp.Wod.BaseWod.BaseWodActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         val add: FloatingActionButton = findViewById(R.id.add)
         add.setOnClickListener {
 
-            this.startActivity(Intent(this, BaseWodActivity::class.java))
+            this.startActivity(Intent(this, DashboardActivity::class.java))
             overridePendingTransition(
                 R.anim.slide_in_right,
                 R.anim.slide_out_left
@@ -37,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         val history: FloatingActionButton = findViewById(R.id.history_button)
         history.setOnClickListener {
 
-            this.startActivity(Intent(this, DatabaseActivity::class.java))
+            this.startActivity(Intent(this, DashboardActivity::class.java))
             overridePendingTransition(
                 R.anim.slide_in_right,
                 R.anim.slide_out_left

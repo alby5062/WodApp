@@ -24,8 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Wod.BaseWod.BaseWodActivity"/>
-        <activity android:name=".Wod.UserWod.UserWodActivity"/>
         <activity android:name=".Login.DashboardActivity"/>
         <activity android:name=".Login.Login" />
         <activity android:name=".Login.Logout" />
