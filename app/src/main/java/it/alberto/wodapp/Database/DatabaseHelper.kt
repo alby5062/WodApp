@@ -13,9 +13,6 @@ class DatabaseHelper(private val context: Context?) : SQLiteAssetHelper(context,
     null,
     DATABASE_VERSION) {
 
-    private val TABLE = arrayListOf(TABLE_NAME_1, TABLE_NAME_2)
-
-
     override fun onUpgrade(db: SQLiteDatabase, i: Int, i1: Int) {
         db.execSQL("DROP TABLE IF EXISTS $TABLE_NAME_1")
         db.execSQL("DROP TABLE IF EXISTS $TABLE_NAME_2")
@@ -55,7 +52,6 @@ class DatabaseHelper(private val context: Context?) : SQLiteAssetHelper(context,
         }
         return cursor_base
     }
-
 
     fun updateData(row_id: String, name: String?, type: String?, date: String?) {
         val db = this.writableDatabase
