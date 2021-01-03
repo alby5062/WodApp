@@ -40,7 +40,7 @@ class BaseWodActivity : AppCompatActivity() {
 
         storeDataInArrays()
 
-        var customAdapter = CustomAdapter(this, this, id, name, type, date)
+        var customAdapter = BaseCustomAdapter(this, this, id, name, type, date)
         recyclerView.adapter = customAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
@@ -53,7 +53,7 @@ class BaseWodActivity : AppCompatActivity() {
     }
 
     private fun storeDataInArrays() {
-        val cursor: Cursor? = myDB!!.readAllData()
+        val cursor: Cursor? = myDB!!.readBaseData()
         if (cursor != null) {
             if (cursor.count == 0) {
                 empty_image_view.visibility = View.VISIBLE
@@ -69,36 +69,5 @@ class BaseWodActivity : AppCompatActivity() {
                 no_data.visibility = View.GONE
             }
         }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.delete_menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.menu_delete) {
-            confirmDialog()
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    private fun confirmDialog() {
-        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
-        builder.setTitle("Delete All?")
-        builder.setMessage("Are you sure you want to delete all Data?")
-        builder.setPositiveButton("Yes"
-        ) { _, _ ->
-            val myDB = DatabaseHelper(this)
-            myDB.deleteAllData()
-            //Refresh Activity
-            val intent = Intent(this, BaseWodActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-        builder.setNegativeButton("No"
-        ) { _, _ -> }
-        builder.create().show()
     }
 }

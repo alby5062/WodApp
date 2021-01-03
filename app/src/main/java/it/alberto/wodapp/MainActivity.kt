@@ -11,6 +11,8 @@ import it.alberto.wodapp.Login.DashboardActivity
 import it.alberto.wodapp.Login.Login
 import it.alberto.wodapp.Login.Logout
 import it.alberto.wodapp.Wod.BaseWod.BaseWodActivity
+import it.alberto.wodapp.Wod.UserWod.CalendarActivity
+import it.alberto.wodapp.Wod.UserWod.UserWodActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         val history: FloatingActionButton = findViewById(R.id.history_button)
         history.setOnClickListener {
 
-            this.startActivity(Intent(this, DashboardActivity::class.java))
+            this.startActivity(Intent(this, CalendarActivity::class.java))
             overridePendingTransition(
                 R.anim.slide_in_right,
                 R.anim.slide_out_left
