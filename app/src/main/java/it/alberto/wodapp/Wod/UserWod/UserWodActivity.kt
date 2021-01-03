@@ -28,6 +28,8 @@ class UserWodActivity : AppCompatActivity() {
 
         val my_date: String? = intent.getStringExtra("my_date")
 
+        println("AOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO" + my_date.toString())
+
         btn_add.setOnClickListener{
             startActivity(Intent(this, AddUserWodActivity::class.java))
         }

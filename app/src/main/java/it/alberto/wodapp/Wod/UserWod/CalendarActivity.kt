@@ -27,18 +27,18 @@ class CalendarActivity : AppCompatActivity() {
                 events.add(EventDay(clickedDayCalendar, R.drawable.ic_dumbbell))
                 calendarView.setEvents(events)
 
+                println(eventDay)
+
                 //var my_date_format = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
                 var my_date = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
-
-
                 //val date = "" + clickedDayCalendar.get(Calendar.DAY_OF_MONTH) + "/" + clickedDayCalendar.get(Calendar.MONTH + 1) + "/" + clickedDayCalendar.get(Calendar.YEAR)
 
-                Toast.makeText(this@CalendarActivity, "", Toast.LENGTH_LONG).show()
+                //Toast.makeText(this@CalendarActivity, "", Toast.LENGTH_LONG).show()
 
-                val intent = Intent(this@CalendarActivity, UserWodActivity::class.java)
-                intent.putExtra("my_date", my_date)
-                startActivity(intent)
+                //val intent = Intent(this@CalendarActivity, UserWodActivity::class.java)
+                //intent.putExtra("my_date", date)
+                //startActivity(intent)
             }
         })
     }
