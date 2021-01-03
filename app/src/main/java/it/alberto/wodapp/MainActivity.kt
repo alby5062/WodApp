@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 import it.alberto.wodapp.Login.DashboardActivity
 import it.alberto.wodapp.Login.Login
 import it.alberto.wodapp.Login.Logout
+import it.alberto.wodapp.Wod.BaseWod.BaseWodActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         val add: FloatingActionButton = findViewById(R.id.add)
         add.setOnClickListener {
 
-            this.startActivity(Intent(this, DashboardActivity::class.java))
+            this.startActivity(Intent(this, BaseWodActivity::class.java))
             overridePendingTransition(
                 R.anim.slide_in_right,
                 R.anim.slide_out_left

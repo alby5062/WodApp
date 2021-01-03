@@ -24,6 +24,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Wod.BaseWod.BaseWodActivity"
+            android:label="BaseWod"/>
+        <activity android:name=".Wod.BaseWod.AddBaseWodActivity"
+            android:label="Add Wod"
+            android:parentActivityName=".Wod.BaseWod.BaseWodActivity"/>
+        <activity android:name=".Wod.BaseWod.UpdateWod"
+            android:parentActivityName=".Wod.BaseWod.BaseWodActivity"/>
         <activity android:name=".Login.DashboardActivity"/>
         <activity android:name=".Login.Login" />
         <activity android:name=".Login.Logout" />
