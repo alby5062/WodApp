@@ -34,7 +34,7 @@ class DatabaseHelper(private val context: Context?) : SQLiteAssetHelper(context,
     }
 
     fun readUserData(my_date: String): Cursor? {
-        val query = "SELECT * FROM $TABLE_NAME_1 WHERE date LIKE $my_date;"
+        val query = "SELECT * FROM $TABLE_NAME_1 WHERE date LIKE '%$my_date%'"
         val db = this.readableDatabase
         var cursor_user: Cursor? = null
         if (db != null) {

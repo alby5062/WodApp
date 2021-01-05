@@ -34,6 +34,8 @@ class SignUp : AppCompatActivity() {
 
         title = "Register"
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         val gender = resources.getStringArray(R.array.gender_spinner)
         val spinner = findViewById<Spinner>(R.id.spinner)
 
@@ -110,6 +112,29 @@ class SignUp : AppCompatActivity() {
             }
         // [END send_email_verification]
     }
+
+
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    /*override fun onStart() {
+      super.onStart()
+      overridePendingTransition(
+          R.anim.slide_in_right,
+          R.anim.slide_out_left
+      )
+  }
+
+  override fun onBackPressed() {
+      super.onBackPressed()
+      overridePendingTransition(
+              R.anim.slide_in_left,
+              R.anim.slide_out_right
+      )
+  }*/
 }
 
 

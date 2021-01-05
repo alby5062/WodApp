@@ -44,6 +44,8 @@ class Login : AppCompatActivity() {
 
         title = "Login"
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         try {
             val info = packageManager.getPackageInfo(
                     "it.alberto.wodapp",
@@ -170,7 +172,6 @@ class Login : AppCompatActivity() {
         }
     }
 
-
     private fun inputCheck(email: String, password: String): Boolean{
         return !(isEmpty((email)) && isEmpty(password))
     }
@@ -182,12 +183,25 @@ class Login : AppCompatActivity() {
         }
     }
 
+    /*override fun onStart() {
+        super.onStart()
+        overridePendingTransition(
+            R.anim.slide_in_right,
+            R.anim.slide_out_left
+        )
+    }
+
     override fun onBackPressed() {
         super.onBackPressed()
         overridePendingTransition(
                 R.anim.slide_in_left,
                 R.anim.slide_out_right
         )
+    }*/
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     companion object{

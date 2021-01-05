@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Wod.UserWod.AddUserWodActivity">
+    tools:context=".Wod.BaseWod.AddBaseWodActivity">
 
     <EditText
         android:id="@+id/ed_add_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="310dp"
+        android:layout_height="49dp"
         android:layout_marginTop="88dp"
         android:ems="10"
-        android:hint="Name"
+        android:hint="  Name"
         android:inputType="textPersonName"
+        android:background= "@drawable/rounded_edit_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,39 +23,39 @@
 
     <EditText
         android:id="@+id/ed_add_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="310dp"
+        android:layout_height="49dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Type"
+        android:hint="  Type"
         android:inputType="textPersonName"
+        android:background="@drawable/bg_edit_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_add_name" />
 
-    <EditText
-        android:id="@+id/ed_add_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="gg/mm/yyyy"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_add_type" />
-
     <Button
         android:id="@+id/btn_add_wod"
-        android:layout_width="206dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="310dp"
+        android:layout_height="62dp"
         android:text="Add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_add_date" />
+        app:layout_constraintTop_toBottomOf="@+id/datePicker1" />
+
+    <DatePicker
+        android:id="@+id/datePicker1"
+        android:layout_width="309dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="8dp"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        android:background="@drawable/rounded_edit_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_add_type" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

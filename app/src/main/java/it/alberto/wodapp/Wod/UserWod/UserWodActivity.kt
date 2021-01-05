@@ -26,9 +26,9 @@ class UserWodActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.list_user_wod)
 
-        val my_date: String? = intent.getStringExtra("my_date")
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        println("AOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO" + my_date.toString())
+        val my_date: String? = intent.getStringExtra("my_date")
 
         btn_add.setOnClickListener{
             startActivity(Intent(this, AddUserWodActivity::class.java))
@@ -40,17 +40,16 @@ class UserWodActivity : AppCompatActivity() {
         type = ArrayList()
         date = ArrayList()
 
-        storeDataInArrays(my_date)
+        storeDataInArrays(my_date.toString())
 
         val customAdapter = UserCustomAdapter(this, this, id, name, type, date)
         recyclerView.adapter = customAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
-
-
     }
 
-    private fun storeDataInArrays(my_date: String?) {
-        val cursor: Cursor? = myDB!!.readUserData(my_date.toString())
+    private fun storeDataInArrays(my_date: String) {
+
+        val cursor: Cursor? = myDB!!.readUserData(my_date)
         if (cursor != null) {
             if (cursor.count == 0) {
                 empty_image_view.visibility = View.VISIBLE
@@ -90,12 +89,34 @@ class UserWodActivity : AppCompatActivity() {
             val myDB = DatabaseHelper(this)
             myDB.deleteAllData()
             //Refresh Activity
-            val intent = Intent(this, BaseWodActivity::class.java)
+            val intent = Intent(this, UserWodActivity::class.java)
             startActivity(intent)
             finish()
         }
         builder.setNegativeButton("No"
         ) { _, _ -> }
         builder.create().show()
+    }
+
+    /*override fun onStart() {
+      super.onStart()
+      overridePendingTransition(
+          R.anim.slide_in_right,
+          R.anim.slide_out_left
+      )
+  }
+
+  override fun onBackPressed() {
+      super.onBackPressed()
+      overridePendingTransition(
+              R.anim.slide_in_left,
+              R.anim.slide_out_right
+      )
+  }*/
+
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

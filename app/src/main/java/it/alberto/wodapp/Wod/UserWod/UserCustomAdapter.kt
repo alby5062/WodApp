@@ -61,5 +61,4 @@ class UserCustomAdapter internal constructor(
         }
     }
 
-
 }

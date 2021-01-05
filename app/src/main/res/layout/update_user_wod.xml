@@ -8,12 +8,13 @@
 
     <EditText
         android:id="@+id/ed_update_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="310dp"
+        android:layout_height="49dp"
         android:layout_marginTop="88dp"
         android:ems="10"
-        android:hint="Name"
+        android:hint="  Name"
         android:inputType="textPersonName"
+        android:background= "@drawable/rounded_edit_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,46 +22,47 @@
 
     <EditText
         android:id="@+id/ed_update_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="310dp"
+        android:layout_height="49dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Type"
+        android:hint="  Type"
         android:inputType="textPersonName"
+        android:background="@drawable/bg_edit_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_update_name" />
 
-    <EditText
-        android:id="@+id/ed_update_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <DatePicker
+        android:id="@+id/datePicker1"
+        android:layout_width="309dp"
+        android:layout_height="160dp"
         android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="gg/mm/yyyy"
-        android:inputType="date"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        android:background="@drawable/rounded_edit_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_update_type" />
+        app:layout_constraintTop_toBottomOf="@+id/ed_update_type"/>
 
     <Button
         android:id="@+id/btn_update_wod"
-        android:layout_width="206dp"
-        android:layout_height="57dp"
+        android:layout_width="310dp"
+        android:layout_height="62dp"
         android:layout_marginTop="16dp"
-        android:text="Update"
+        android:text="Add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_update_date" />
+        app:layout_constraintTop_toBottomOf="@+id/datePicker1" />
 
     <Button
         android:id="@+id/btn_delete_wod"
-        android:layout_width="206dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="310dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="8dp"
         android:text="Delete"
         android:backgroundTint="@color/red"
         app:layout_constraintEnd_toEndOf="parent"

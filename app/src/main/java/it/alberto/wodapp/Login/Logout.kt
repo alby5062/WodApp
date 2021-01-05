@@ -16,6 +16,8 @@ class Logout : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_logout)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         logout_button.setOnClickListener {
             logout()
         }
@@ -35,6 +37,27 @@ class Logout : AppCompatActivity() {
         finish()
 
         startActivity(Intent(this, MainActivity::class.java))
-
     }
+
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    /*override fun onStart() {
+      super.onStart()
+      overridePendingTransition(
+          R.anim.slide_in_right,
+          R.anim.slide_out_left
+      )
+  }
+
+  override fun onBackPressed() {
+      super.onBackPressed()
+      overridePendingTransition(
+              R.anim.slide_in_left,
+              R.anim.slide_out_right
+      )
+  }*/
 }

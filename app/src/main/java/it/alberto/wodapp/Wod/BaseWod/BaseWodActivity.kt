@@ -28,6 +28,8 @@ class BaseWodActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.list_base_wod)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         btn_add.setOnClickListener{
             startActivity(Intent(this, AddBaseWodActivity::class.java))
         }
@@ -69,5 +71,26 @@ class BaseWodActivity : AppCompatActivity() {
                 no_data.visibility = View.GONE
             }
         }
+    }
+
+    /*override fun onStart() {
+      super.onStart()
+      overridePendingTransition(
+          R.anim.slide_in_right,
+          R.anim.slide_out_left
+      )
+  }
+
+  override fun onBackPressed() {
+      super.onBackPressed()
+      overridePendingTransition(
+              R.anim.slide_in_left,
+              R.anim.slide_out_right
+      )
+  }*/
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

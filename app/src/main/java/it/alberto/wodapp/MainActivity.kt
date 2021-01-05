@@ -4,15 +4,19 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
+import it.alberto.wodapp.Database.DatabaseHelper
 import it.alberto.wodapp.Login.DashboardActivity
 import it.alberto.wodapp.Login.Login
 import it.alberto.wodapp.Login.Logout
 import it.alberto.wodapp.Wod.BaseWod.BaseWodActivity
 import it.alberto.wodapp.Wod.UserWod.CalendarActivity
 import it.alberto.wodapp.Wod.UserWod.UserWodActivity
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.list_base_wod.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,20 +34,14 @@ class MainActivity : AppCompatActivity() {
         add.setOnClickListener {
 
             this.startActivity(Intent(this, BaseWodActivity::class.java))
-            overridePendingTransition(
-                R.anim.slide_in_right,
-                R.anim.slide_out_left
-            )
+            nextActivity()
         }
 
         val history: FloatingActionButton = findViewById(R.id.history_button)
         history.setOnClickListener {
 
             this.startActivity(Intent(this, CalendarActivity::class.java))
-            overridePendingTransition(
-                R.anim.slide_in_right,
-                R.anim.slide_out_left
-            )
+            nextActivity()
         }
     }
 
@@ -94,5 +92,17 @@ class MainActivity : AppCompatActivity() {
             // Invoke the superclass to handle it.
             super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
+
+    private fun nextActivity(){
+        overridePendingTransition(
+            R.anim.slide_in_right,
+            R.anim.slide_out_left
+        )
     }
 }

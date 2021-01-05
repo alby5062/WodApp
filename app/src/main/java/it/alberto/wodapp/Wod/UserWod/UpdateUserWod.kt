@@ -1,5 +1,6 @@
 package it.alberto.wodapp.Wod.UserWod
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -8,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import it.alberto.wodapp.Database.DatabaseHelper
 import it.alberto.wodapp.R
 import kotlinx.android.synthetic.main.update_user_wod.*
-
 
 class UpdateUserWod : AppCompatActivity() {
 
@@ -21,15 +21,21 @@ class UpdateUserWod : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.update_user_wod)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         getAndSetIntentData()
+
+        val intent = Intent(this, UserWodActivity::class.java)
 
         btn_update_wod.setOnClickListener {
 
             val myDB = DatabaseHelper(this)
             name = ed_update_name.text.toString().trim { it <= ' ' }
             type = ed_update_type.text.toString().trim { it <= ' ' }
-            date = ed_update_date.text.toString().trim { it <= ' ' }
+            date = datePicker1.toString().trim { it <= ' ' }
             myDB.updateData(id, name, type, date)
+            intent.putExtra("my_date",date)
+            startActivity(intent)
         }
 
         btn_delete_wod.setOnClickListener{
@@ -50,7 +56,7 @@ class UpdateUserWod : AppCompatActivity() {
             //Setting Intent Data
             ed_update_name.setText(name)
             ed_update_type.setText(type)
-            ed_update_date.setText(date)
+            //ed_update_date.setText(date)
             Log.d("stev", "$name $type $date")
         } else {
             Toast.makeText(this, "No data.", Toast.LENGTH_SHORT).show()
@@ -65,10 +71,33 @@ class UpdateUserWod : AppCompatActivity() {
         ) { _, _ ->
             val myDB = DatabaseHelper(this)
             myDB.deleteOneRow(id)
-            finish()
+            val intent = Intent(this, UserWodActivity::class.java)
+            intent.putExtra("my_date", date)
+            startActivity(intent)
         }
         builder.setNegativeButton("No"
         ) { _, _ -> }
         builder.create().show()
+    }
+
+    /*override fun onStart() {
+      super.onStart()
+      overridePendingTransition(
+          R.anim.slide_in_right,
+          R.anim.slide_out_left
+      )
+  }
+
+  override fun onBackPressed() {
+      super.onBackPressed()
+      overridePendingTransition(
+              R.anim.slide_in_left,
+              R.anim.slide_out_right
+      )
+  }*/
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

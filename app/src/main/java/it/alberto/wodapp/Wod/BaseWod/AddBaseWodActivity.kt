@@ -21,13 +21,15 @@ class AddBaseWodActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_base_wod)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         getAndSetIntentData()
 
         btn_add_wod.setOnClickListener {
             val myDB = DatabaseHelper(this)
             name = ed_add_name.text.toString().trim { it <= ' ' }
             type = ed_add_type.text.toString().trim { it <= ' ' }
-            date = ed_add_date.text.toString().trim { it <= ' ' }
+            date = datePicker1.toString().trim { it <= ' ' }
             myDB.add(name, type, date)
         }
     }
@@ -45,10 +47,31 @@ class AddBaseWodActivity : AppCompatActivity() {
             //Setting Intent Data
             ed_add_name.setText(name)
             ed_add_type.setText(type)
-            ed_add_date.setText(date)
+            //ed_add_date.setText(date)
             Log.d("stev", "$name $type $date")
         } else {
             Toast.makeText(this, "No data.", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    /*override fun onStart() {
+      super.onStart()
+      overridePendingTransition(
+          R.anim.slide_in_right,
+          R.anim.slide_out_left
+      )
+  }
+
+  override fun onBackPressed() {
+      super.onBackPressed()
+      overridePendingTransition(
+              R.anim.slide_in_left,
+              R.anim.slide_out_right
+      )
+  }*/
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

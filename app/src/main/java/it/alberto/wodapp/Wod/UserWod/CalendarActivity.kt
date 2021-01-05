@@ -2,15 +2,13 @@ package it.alberto.wodapp.Wod.UserWod
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
+import android.widget.Button
+import android.widget.DatePicker
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.applandeo.materialcalendarview.EventDay
-import com.applandeo.materialcalendarview.listeners.OnDayClickListener
 import it.alberto.wodapp.R
-import kotlinx.android.synthetic.main.calendar_activity.*
-import java.text.SimpleDateFormat
-import java.util.*
-import kotlin.collections.ArrayList
+
 
 class CalendarActivity : AppCompatActivity() {
 
@@ -18,7 +16,60 @@ class CalendarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.calendar_activity)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        val tvw = findViewById<View>(R.id.textView1) as TextView
+        val picker = findViewById<View>(R.id.datePicker1) as DatePicker
+        val btnGet = findViewById<View>(R.id.button1) as Button
+        btnGet.setOnClickListener {
+            val date =
+                picker.dayOfMonth.toString() + "/" + (picker.month + 1).toString() + "/" + picker.year
+            tvw.text = date
+
+            val intent = Intent(this, UserWodActivity::class.java)
+            intent.putExtra("my_date", date)
+            startActivity(intent)
+        }
+    }
+
+    /*override fun onStart() {
+      super.onStart()
+      overridePendingTransition(
+          R.anim.slide_in_right,
+          R.anim.slide_out_left
+      )
+  }
+
+  override fun onBackPressed() {
+      super.onBackPressed()
+      overridePendingTransition(
+              R.anim.slide_in_left,
+              R.anim.slide_out_right
+      )
+  }*/
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+}
+
+    /*override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.calendar_activity)
+
         val events: MutableList<EventDay> = ArrayList()
+
+        calendarView.setOnDayClickListener(object : OnDayClickListener {
+            override fun onDayClick(eventDay: EventDay) {
+                val clickedDayCalendar: Calendar = eventDay.calendar
+                events.add(EventDay(clickedDayCalendar, R.drawable.ic_dumbbell))
+                calendarView.setEvents(events)
+
+                nextActivity()
+
+            }
+        })
 
         calendarView.setOnDayClickListener(object : OnDayClickListener {
             override fun onDayClick(eventDay: EventDay) {
@@ -32,14 +83,21 @@ class CalendarActivity : AppCompatActivity() {
                 //var my_date_format = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
                 var my_date = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
-                //val date = "" + clickedDayCalendar.get(Calendar.DAY_OF_MONTH) + "/" + clickedDayCalendar.get(Calendar.MONTH + 1) + "/" + clickedDayCalendar.get(Calendar.YEAR)
+                val day = Calendar.DAY_OF_MONTH
+                //val month =
+                val year = Calendar.YEAR
 
-                //Toast.makeText(this@CalendarActivity, "", Toast.LENGTH_LONG).show()
+
+
+
+
+
+                //val date = "" + clickedDayCalendar.get(day) + "/" + (clickedDayCalendar.get(month + 1)) + "/" + clickedDayCalendar.get( year)
+
+                //Toast.makeText(this@CalendarActivity, date, Toast.LENGTH_LONG).show()
 
                 //val intent = Intent(this@CalendarActivity, UserWodActivity::class.java)
                 //intent.putExtra("my_date", date)
                 //startActivity(intent)
             }
-        })
-    }
-}
+        })*/
