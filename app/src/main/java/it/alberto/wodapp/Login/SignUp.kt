@@ -4,10 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -36,37 +33,19 @@ class SignUp : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val gender = resources.getStringArray(R.array.gender_spinner)
-        val spinner = findViewById<Spinner>(R.id.spinner)
-
-        if (spinner != null) {
-            val adapter = ArrayAdapter(this,
-                android.R.layout.simple_spinner_item, gender)
-            spinner.adapter = adapter
-
-            spinner.onItemSelectedListener = object :
-                AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>,
-                                            view: View, position: Int, id: Long) {
-                    Toast.makeText(applicationContext,getString(R.string.selected_item) + " " + "" + gender[position], Toast.LENGTH_SHORT).show()
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // write code to perform some action
-                }
-            }
-        }
-
         sign_up_button_done.setOnClickListener{
             signUp()
         }
     }
 
     private fun signUp() {
+        val gender_radio: Int = radioGroup!!.checkedRadioButtonId
+        val radioButton = findViewById<RadioButton>(gender_radio)
+
         name = name_sign_up.text.toString()
         surname = surname_sign_up.text.toString()
         age = age_sign_up.text.toString()
-        gender = spinner.selectedItem.toString()
+        gender = radioButton.text.toString()
         email = mail_sign_up.text.toString()
         password = password_sign_up.text.toString()
 
@@ -76,6 +55,7 @@ class SignUp : AppCompatActivity() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Log.d(TAG, "Success")
+                        Log.d(TAG, gender)
                         startActivity(Intent(this, Login::class.java))
                         sendEmailVerification()
                         FirebaseDatabase.getInstance().reference.child(name).child("UserData").child("Name").setValue(name)
@@ -138,21 +118,23 @@ class SignUp : AppCompatActivity() {
 }
 
 
-/*val spinner: Spinner = findViewById(R.id.spinner)
-            // Create an ArrayAdapter using the string array and a default spinner layout
-            ArrayAdapter.createFromResource(
-                this,
-                R.array.gender_spinner,
-                android.R.layout.simple_spinner_item
-            ).also { adapter ->
-                // Specify the layout to use when the list of choices appears
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                // Apply the adapter to the spinner
-                spinner.adapter = adapter
+/*val gender = resources.getStringArray(R.array.gender_spinner)
+    val spinner = findViewById<Spinner>(R.id.spinner)
+
+    if (spinner != null) {
+        val adapter = ArrayAdapter(this,
+            android.R.layout.simple_spinner_item, gender)
+        spinner.adapter = adapter
+
+        spinner.onItemSelectedListener = object :
+            AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>,
+                                        view: View, position: Int, id: Long) {
+                Toast.makeText(applicationContext,getString(R.string.selected_item) + " " + "" + gender[position], Toast.LENGTH_SHORT).show()
             }
 
-
-
-
-
-            */
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // write code to perform some action
+            }
+        }
+    }*/

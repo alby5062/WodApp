@@ -3,10 +3,13 @@ package it.alberto.wodapp.Wod.UserWod
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import it.alberto.wodapp.Database.DatabaseHelper
+import it.alberto.wodapp.MainActivity
 import it.alberto.wodapp.R
 import kotlinx.android.synthetic.main.update_user_wod.*
 
@@ -23,16 +26,20 @@ class UpdateUserWod : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        val picker = findViewById<View>(R.id.datePicker1) as DatePicker
+
         getAndSetIntentData()
 
         val intent = Intent(this, UserWodActivity::class.java)
 
         btn_update_wod.setOnClickListener {
 
+            val date_pik = picker.dayOfMonth.toString() + "/" + (picker.month + 1).toString() + "/" + picker.year
+
             val myDB = DatabaseHelper(this)
             name = ed_update_name.text.toString().trim { it <= ' ' }
             type = ed_update_type.text.toString().trim { it <= ' ' }
-            date = datePicker1.toString().trim { it <= ' ' }
+            date = date_pik.trim { it <= ' ' }
             myDB.updateData(id, name, type, date)
             intent.putExtra("my_date",date)
             startActivity(intent)
@@ -80,6 +87,14 @@ class UpdateUserWod : AppCompatActivity() {
         builder.create().show()
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, UserWodActivity::class.java)
+        intent.putExtra("my_date", date)
+        startActivity(intent)
+        finish()
+    }
+
     /*override fun onStart() {
       super.onStart()
       overridePendingTransition(
@@ -97,7 +112,9 @@ class UpdateUserWod : AppCompatActivity() {
   }*/
 
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
+        val intent = Intent(this, UserWodActivity::class.java)
+        intent.putExtra("my_date", date)
+        startActivity(intent)
         return true
     }
 }

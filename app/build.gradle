@@ -141,4 +141,8 @@ dependencies {
 
     // SQLite
     implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.1'
+
+    implementation 'me.zhanghai.android.materialprogressbar:library:1.6.1'
+    implementation 'androidx.preference:preference-ktx:1.1.1'
+    implementation 'com.pavelsikun:material-seekbar-preference:2.3.0+'
 }

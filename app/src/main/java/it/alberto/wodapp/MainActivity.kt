@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.RadioButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
@@ -12,6 +14,7 @@ import it.alberto.wodapp.Database.DatabaseHelper
 import it.alberto.wodapp.Login.DashboardActivity
 import it.alberto.wodapp.Login.Login
 import it.alberto.wodapp.Login.Logout
+import it.alberto.wodapp.Utility.TimerActivity
 import it.alberto.wodapp.Wod.BaseWod.BaseWodActivity
 import it.alberto.wodapp.Wod.UserWod.CalendarActivity
 import it.alberto.wodapp.Wod.UserWod.UserWodActivity
@@ -30,18 +33,19 @@ class MainActivity : AppCompatActivity() {
                     .setAction("Action", null).show()
         }*/
 
+        timer.setOnClickListener {
+            startActivity(Intent(this, TimerActivity::class.java))
+        }
+
         val add: FloatingActionButton = findViewById(R.id.add)
         add.setOnClickListener {
-
             this.startActivity(Intent(this, BaseWodActivity::class.java))
-            nextActivity()
         }
 
         val history: FloatingActionButton = findViewById(R.id.history_button)
         history.setOnClickListener {
-
             this.startActivity(Intent(this, CalendarActivity::class.java))
-            nextActivity()
+            finish()
         }
     }
 
@@ -61,30 +65,17 @@ class MainActivity : AppCompatActivity() {
         R.id.action_logged -> {
             // User chose the "Settings" item, show the app settings UI...
             this.startActivity(Intent(this, Logout::class.java))
-            overridePendingTransition(
-                R.anim.slide_in_right,
-                R.anim.slide_out_left
-            )
             true
         }
 
         R.id.action_login -> {
             // User chose the "Settings" item, show the app settings UI...
             this.startActivity(Intent(this, Login::class.java))
-            overridePendingTransition(
-                R.anim.slide_in_right,
-                R.anim.slide_out_left
-            )
             true
         }
 
         R.id.action_logout_menu -> {
-
             this.startActivity(Intent(this, Logout::class.java))
-            overridePendingTransition(
-                R.anim.slide_in_right,
-                R.anim.slide_out_left
-            )
             true
         }
         else -> {
@@ -97,12 +88,5 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         finish()
-    }
-
-    private fun nextActivity(){
-        overridePendingTransition(
-            R.anim.slide_in_right,
-            R.anim.slide_out_left
-        )
     }
 }

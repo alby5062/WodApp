@@ -32,6 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
+        android:background="@drawable/myrect"
         android:hint="Name"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,6 +64,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/last_type" />
 
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="timer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/last_date" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add"
         android:layout_width="wrap_content"
@@ -90,8 +103,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@mipmap/ic_history"
         app:tint="@color/white" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

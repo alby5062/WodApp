@@ -31,7 +31,10 @@ class UserWodActivity : AppCompatActivity() {
         val my_date: String? = intent.getStringExtra("my_date")
 
         btn_add.setOnClickListener{
-            startActivity(Intent(this, AddUserWodActivity::class.java))
+            val intent = Intent(this, AddUserWodActivity::class.java)
+            intent.putExtra("my_date",my_date)
+            startActivity(intent)
+            finish()
         }
 
         myDB = DatabaseHelper(this)
@@ -98,6 +101,12 @@ class UserWodActivity : AppCompatActivity() {
         builder.create().show()
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this, CalendarActivity::class.java))
+        finish()
+    }
+
     /*override fun onStart() {
       super.onStart()
       overridePendingTransition(
@@ -114,9 +123,8 @@ class UserWodActivity : AppCompatActivity() {
       )
   }*/
 
-
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
+        startActivity(Intent(this, CalendarActivity::class.java))
         return true
     }
 }

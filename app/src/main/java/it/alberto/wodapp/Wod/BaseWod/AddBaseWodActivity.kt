@@ -1,11 +1,15 @@
 package it.alberto.wodapp.Wod.BaseWod
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import it.alberto.wodapp.Database.DatabaseHelper
 import it.alberto.wodapp.R
+import it.alberto.wodapp.Wod.UserWod.CalendarActivity
 import kotlinx.android.synthetic.main.add_base_wod.*
 
 
@@ -23,13 +27,16 @@ class AddBaseWodActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        val picker = findViewById<View>(R.id.datePicker1) as DatePicker
+        val date_pik = picker.dayOfMonth.toString() + "/" + (picker.month + 1).toString() + "/" + picker.year
+
         getAndSetIntentData()
 
         btn_add_wod.setOnClickListener {
             val myDB = DatabaseHelper(this)
             name = ed_add_name.text.toString().trim { it <= ' ' }
             type = ed_add_type.text.toString().trim { it <= ' ' }
-            date = datePicker1.toString().trim { it <= ' ' }
+            date = date_pik.trim { it <= ' ' }
             myDB.add(name, type, date)
         }
     }
@@ -54,6 +61,11 @@ class AddBaseWodActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this, BaseWodActivity::class.java))
+    }
+
     /*override fun onStart() {
       super.onStart()
       overridePendingTransition(
@@ -71,7 +83,7 @@ class AddBaseWodActivity : AppCompatActivity() {
   }*/
 
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
+        startActivity(Intent(this, BaseWodActivity::class.java))
         return true
     }
 }

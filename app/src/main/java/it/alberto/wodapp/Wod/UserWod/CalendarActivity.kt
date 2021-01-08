@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.DatePicker
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import it.alberto.wodapp.MainActivity
 import it.alberto.wodapp.R
 
 
@@ -29,7 +30,14 @@ class CalendarActivity : AppCompatActivity() {
             val intent = Intent(this, UserWodActivity::class.java)
             intent.putExtra("my_date", date)
             startActivity(intent)
+            finish()
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     /*override fun onStart() {
@@ -49,7 +57,7 @@ class CalendarActivity : AppCompatActivity() {
   }*/
 
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
+        startActivity(Intent(this, MainActivity::class.java))
         return true
     }
 }

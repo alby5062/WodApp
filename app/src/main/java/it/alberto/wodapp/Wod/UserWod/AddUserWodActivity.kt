@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.DatePicker
 import androidx.appcompat.app.AppCompatActivity
 import it.alberto.wodapp.Database.DatabaseHelper
+import it.alberto.wodapp.MainActivity
 import it.alberto.wodapp.R
 import kotlinx.android.synthetic.main.add_user_wod.*
 
@@ -16,15 +17,13 @@ class AddUserWodActivity : AppCompatActivity() {
         setContentView(R.layout.add_user_wod)
 
         val picker = findViewById<View>(R.id.datePicker1) as DatePicker
+        val date = picker.dayOfMonth.toString() + "/" + (picker.month + 1).toString() + "/" + picker.year
+        val intent = Intent(this, UserWodActivity::class.java)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         btn_add_wod.setOnClickListener{
-
-            val date = picker.dayOfMonth.toString() + "/" + (picker.month + 1).toString() + "/" + picker.year
-            val intent = Intent(this, UserWodActivity::class.java)
             intent.putExtra("my_date", date)
-
 
             val myDB = DatabaseHelper(this)
             myDB.add(
@@ -35,6 +34,18 @@ class AddUserWodActivity : AppCompatActivity() {
 
             startActivity(intent)
         }
+    }
+
+    private fun lastUsed(){
+        val my_date: String? = intent.getStringExtra("my_date")
+        val intent = Intent(this, UserWodActivity::class.java)
+        intent.putExtra("my_date", my_date)
+        startActivity(intent)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        lastUsed()
     }
 
     /*override fun onStart() {
@@ -54,7 +65,7 @@ class AddUserWodActivity : AppCompatActivity() {
   }*/
 
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
+        lastUsed()
         return true
     }
 }

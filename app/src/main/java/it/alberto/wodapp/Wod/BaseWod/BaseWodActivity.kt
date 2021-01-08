@@ -11,7 +11,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import it.alberto.wodapp.Database.DatabaseHelper
+import it.alberto.wodapp.MainActivity
 import it.alberto.wodapp.R
+import it.alberto.wodapp.Wod.UserWod.CalendarActivity
 import kotlinx.android.synthetic.main.list_base_wod.*
 
 
@@ -73,6 +75,11 @@ class BaseWodActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this, MainActivity::class.java))
+    }
+
     /*override fun onStart() {
       super.onStart()
       overridePendingTransition(
@@ -90,7 +97,7 @@ class BaseWodActivity : AppCompatActivity() {
   }*/
 
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
+        startActivity(Intent(this, MainActivity::class.java))
         return true
     }
 }
