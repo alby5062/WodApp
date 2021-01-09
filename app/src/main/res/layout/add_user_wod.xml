@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,11 +10,11 @@
         android:id="@+id/ed_add_name"
         android:layout_width="310dp"
         android:layout_height="49dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/rounded_edit_text"
         android:ems="10"
         android:hint="  Name"
         android:inputType="textPersonName"
-        android:background= "@drawable/rounded_edit_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,36 +25,63 @@
         android:layout_width="310dp"
         android:layout_height="49dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_edit_text"
         android:ems="10"
         android:hint="  Type"
         android:inputType="textPersonName"
-        android:background="@drawable/bg_edit_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_add_name" />
 
-    <Button
-        android:id="@+id/btn_add_wod"
+    <EditText
+        android:id="@+id/editTextTextPersonName"
         android:layout_width="310dp"
-        android:layout_height="62dp"
-        android:text="Add"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datePicker1" />
-
-    <DatePicker
-        android:id="@+id/datePicker1"
-        android:layout_width="309dp"
-        android:layout_height="160dp"
+        android:layout_height="49dp"
         android:layout_marginTop="8dp"
-        android:calendarViewShown="false"
-        android:datePickerMode="spinner"
         android:background="@drawable/rounded_edit_text"
+        android:ems="10"
+        android:hint="  Time/Rounds"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_add_type" />
+
+    <DatePicker
+        android:id="@+id/datePicker"
+        android:layout_width="308dp"
+        android:layout_height="147dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_edit_text"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@+id/datePicker"
+        tools:layout_editor_absoluteX="16dp">
+
+        <include layout="@layout/prova" />
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_add_wod"
+        android:layout_width="303dp"
+        android:layout_height="53dp"
+        android:text="Add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import it.alberto.wodapp.Database.DatabaseHelper
-import it.alberto.wodapp.MainActivity
 import it.alberto.wodapp.R
 import kotlinx.android.synthetic.main.update_user_wod.*
 
@@ -26,7 +25,7 @@ class UpdateUserWod : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val picker = findViewById<View>(R.id.datePicker1) as DatePicker
+        val picker = findViewById<View>(R.id.datePicker) as DatePicker
 
         getAndSetIntentData()
 

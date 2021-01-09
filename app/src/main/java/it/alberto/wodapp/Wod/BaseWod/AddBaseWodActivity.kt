@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import it.alberto.wodapp.Database.DatabaseHelper
 import it.alberto.wodapp.R
-import it.alberto.wodapp.Wod.UserWod.CalendarActivity
 import kotlinx.android.synthetic.main.add_base_wod.*
 
 
@@ -27,7 +26,7 @@ class AddBaseWodActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val picker = findViewById<View>(R.id.datePicker1) as DatePicker
+        val picker = findViewById<View>(R.id.datePicker) as DatePicker
         val date_pik = picker.dayOfMonth.toString() + "/" + (picker.month + 1).toString() + "/" + picker.year
 
         getAndSetIntentData()

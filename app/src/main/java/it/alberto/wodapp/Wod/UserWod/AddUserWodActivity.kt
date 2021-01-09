@@ -1,22 +1,29 @@
 package it.alberto.wodapp.Wod.UserWod
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.DatePicker
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import it.alberto.wodapp.Database.DatabaseHelper
-import it.alberto.wodapp.MainActivity
 import it.alberto.wodapp.R
 import kotlinx.android.synthetic.main.add_user_wod.*
 
 class AddUserWodActivity : AppCompatActivity() {
 
+    private var parentLinearLayout: LinearLayout? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_user_wod)
+        parentLinearLayout = findViewById<View>(R.id.parent_linear_layout) as LinearLayout
 
-        val picker = findViewById<View>(R.id.datePicker1) as DatePicker
+
+        val picker = findViewById<View>(R.id.datePicker) as DatePicker
         val date = picker.dayOfMonth.toString() + "/" + (picker.month + 1).toString() + "/" + picker.year
         val intent = Intent(this, UserWodActivity::class.java)
 
@@ -31,9 +38,20 @@ class AddUserWodActivity : AppCompatActivity() {
                 ed_add_type.text.toString().trim { it <= ' ' },
                 date.trim { it <= ' ' }
             )
-
             startActivity(intent)
         }
+    }
+
+    @SuppressLint("InflateParams")
+    fun onAddField(v: View?) {
+        val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val rowView: View = inflater.inflate(R.layout.field, null)
+        // Add the new row before the add field button.
+        parentLinearLayout!!.addView(rowView, parentLinearLayout!!.childCount - 1)
+    }
+
+    fun onDelete(v: View) {
+        parentLinearLayout!!.removeView(v.parent as View)
     }
 
     private fun lastUsed(){
