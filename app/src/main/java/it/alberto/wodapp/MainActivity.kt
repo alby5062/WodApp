@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         }*/
 
         timer.setOnClickListener {
-            startActivity(Intent(this, TimerActivity::class.java))
+            startActivity(Intent(this, DashboardActivity::class.java))
         }
 
         val add: FloatingActionButton = findViewById(R.id.add)
