@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/fragment"
-        android:name="it.alberto.wodapp.Utility.SettingsFragment"
+        android:name="it.alberto.wodapp.Utility.Timer.SettingsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"

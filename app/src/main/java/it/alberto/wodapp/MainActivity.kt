@@ -4,22 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.RadioButton
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
-import it.alberto.wodapp.Database.DatabaseHelper
 import it.alberto.wodapp.Login.DashboardActivity
 import it.alberto.wodapp.Login.Login
 import it.alberto.wodapp.Login.Logout
-import it.alberto.wodapp.Utility.TimerActivity
+import it.alberto.wodapp.Utility.StopWatch.StopWatch
 import it.alberto.wodapp.Wod.BaseWod.BaseWodActivity
 import it.alberto.wodapp.Wod.UserWod.CalendarActivity
-import it.alberto.wodapp.Wod.UserWod.UserWodActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.list_base_wod.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,6 +40,10 @@ class MainActivity : AppCompatActivity() {
         history.setOnClickListener {
             this.startActivity(Intent(this, CalendarActivity::class.java))
             finish()
+        }
+
+        stop_watch.setOnClickListener {
+            startActivity(Intent(this, StopWatch::class.java))
         }
     }
 

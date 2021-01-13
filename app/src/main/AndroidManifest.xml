@@ -43,13 +43,13 @@
             android:label="Choose date" />
 
         <!-- TIMER ACTIVITY -->
-        <activity android:name=".Utility.TimerActivity"/>
+        <activity android:name=".Utility.Timer.TimerActivity"/>
         <receiver
-            android:name=".Utility.TimerExpiredReceiver"
+            android:name=".Utility.Timer.TimerExpiredReceiver"
             android:enabled="true"
             android:exported="false" />
         <receiver
-            android:name=".Utility.TimerNotificationActionReceiver"
+            android:name=".Utility.Timer.TimerNotificationActionReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
@@ -60,12 +60,14 @@
             </intent-filter>
         </receiver>
         <activity
-            android:name=".Utility.Settings"
-            android:parentActivityName=".Utility.TimerActivity">
+            android:name=".Utility.Timer.Settings"
+            android:parentActivityName=".Utility.Timer.TimerActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Utility.TimerActivity" />
+                android:value=".Utility.Timer.TimerActivity" />
         </activity>
+
+        <activity android:name=".Utility.StopWatch.StopWatch"/>
 
 
         <activity android:name=".Login.DashboardActivity" />
