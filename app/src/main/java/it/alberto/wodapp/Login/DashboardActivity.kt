@@ -14,7 +14,7 @@ class DashboardActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.prova)
+        setContentView(R.layout.stop_watch)
 
         parentLinearLayout = findViewById<View>(R.id.parent_linear_layout) as LinearLayout
 

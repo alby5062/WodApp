@@ -11,6 +11,7 @@ import it.alberto.wodapp.Login.DashboardActivity
 import it.alberto.wodapp.Login.Login
 import it.alberto.wodapp.Login.Logout
 import it.alberto.wodapp.Utility.StopWatch.StopWatch
+import it.alberto.wodapp.Utility.Timer.TimerActivity
 import it.alberto.wodapp.Wod.BaseWod.BaseWodActivity
 import it.alberto.wodapp.Wod.UserWod.CalendarActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         }*/
 
         timer.setOnClickListener {
-            startActivity(Intent(this, DashboardActivity::class.java))
+            startActivity(Intent(this, TimerActivity::class.java))
         }
 
         val add: FloatingActionButton = findViewById(R.id.add)

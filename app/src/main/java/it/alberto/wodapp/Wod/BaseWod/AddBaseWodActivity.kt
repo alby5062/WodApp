@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import it.alberto.wodapp.Database.DatabaseHelper
 import it.alberto.wodapp.R
+import it.alberto.wodapp.Wod.UserWod.UserWodActivity
 import kotlinx.android.synthetic.main.add_base_wod.*
 
 
@@ -37,6 +38,9 @@ class AddBaseWodActivity : AppCompatActivity() {
             type = ed_add_type.text.toString().trim { it <= ' ' }
             date = date_pik.trim { it <= ' ' }
             myDB.add(name, type, date)
+            val intent = Intent(this, UserWodActivity::class.java)
+            intent.putExtra("my_date", date)
+            startActivity(intent)
         }
     }
 
