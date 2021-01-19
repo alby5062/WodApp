@@ -19,12 +19,14 @@ class DatabaseHelper(private val context: Context?) : SQLiteAssetHelper(context,
         onCreate(db)
     }
 
-    fun add(name: String?, type: String?, date: String) {
+    fun add(name: String?, type: String?, date: String, exercises: String) {
         val db = this.writableDatabase
         val cv = ContentValues()
         cv.put(COLUMN_NAME, name)
         cv.put(COLUMN_TYPE, type)
         cv.put(COLUMN_DATE, date)
+        cv.put(COLUMN_EX, exercises)
+
         val result = db.insert(TABLE_NAME_1, null, cv)
         if (result == -1L) {
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
@@ -84,13 +86,14 @@ class DatabaseHelper(private val context: Context?) : SQLiteAssetHelper(context,
 
     companion object {
         private const val DATABASE_NAME = "wod_database.db"
-        private const val DATABASE_VERSION = 2
+        private const val DATABASE_VERSION = 3
         private const val TABLE_NAME_1 = "user_wod"
         private const val TABLE_NAME_2 = "base_wod"
         private const val COLUMN_ID = "_id"
         private const val COLUMN_NAME = "name"
         private const val COLUMN_TYPE = "type"
         private const val COLUMN_DATE = "date"
+        private const val COLUMN_EX = "exercises"
     }
 }
 

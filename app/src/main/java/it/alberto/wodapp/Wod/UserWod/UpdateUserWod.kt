@@ -18,6 +18,7 @@ class UpdateUserWod : AppCompatActivity() {
     lateinit var name: String
     private lateinit var type: String
     private lateinit var date: String
+    private lateinit var exercises: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,11 +59,15 @@ class UpdateUserWod : AppCompatActivity() {
             name = intent.getStringExtra("name").toString()
             type = intent.getStringExtra("type").toString()
             date = intent.getStringExtra("date").toString()
+            exercises = intent.getStringExtra("exercises").toString()
+
+            val mex = exercises.replace("\\n", "\n")
 
             //Setting Intent Data
             ed_update_name.setText(name)
             ed_update_type.setText(type)
             //ed_update_date.setText(date)
+            ed_update_ex.text = mex
             Log.d("stev", "$name $type $date")
         } else {
             Toast.makeText(this, "No data.", Toast.LENGTH_SHORT).show()

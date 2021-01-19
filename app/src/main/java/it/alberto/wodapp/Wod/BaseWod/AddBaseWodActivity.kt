@@ -19,6 +19,7 @@ class AddBaseWodActivity : AppCompatActivity() {
     lateinit var name: String
     private lateinit var type: String
     private lateinit var date: String
+    private lateinit var exercises: String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +38,8 @@ class AddBaseWodActivity : AppCompatActivity() {
             name = ed_add_name.text.toString().trim { it <= ' ' }
             type = ed_add_type.text.toString().trim { it <= ' ' }
             date = date_pik.trim { it <= ' ' }
-            myDB.add(name, type, date)
+            exercises = ed_add_ex.text.toString().trim { it <= ' '}
+            myDB.add(name, type, date, exercises)
             val intent = Intent(this, UserWodActivity::class.java)
             intent.putExtra("my_date", date)
             startActivity(intent)
@@ -46,18 +48,21 @@ class AddBaseWodActivity : AppCompatActivity() {
 
     private fun getAndSetIntentData() {
         if (intent.hasExtra("id") && intent.hasExtra("name") &&
-            intent.hasExtra("type") && intent.hasExtra("date")
+            intent.hasExtra("type") && intent.hasExtra("date") &&
+            intent.hasExtra("exercises")
         ) {
             //Getting Data from Intent
             id = intent.getStringExtra("id").toString()
             name = intent.getStringExtra("name").toString()
             type = intent.getStringExtra("type").toString()
             date = intent.getStringExtra("date").toString()
+            exercises = intent.getStringExtra("exercises").toString()
 
             //Setting Intent Data
             ed_add_name.setText(name)
             ed_add_type.setText(type)
             //ed_add_date.setText(date)
+            ed_add_ex.text = exercises
             Log.d("stev", "$name $type $date")
         } else {
             Toast.makeText(this, "No data.", Toast.LENGTH_SHORT).show()

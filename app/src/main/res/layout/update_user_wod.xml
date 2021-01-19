@@ -42,26 +42,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_update_type"/>
+        app:layout_constraintTop_toBottomOf="@+id/ed_update_type" />
 
-    <Button
-        android:id="@+id/btn_update_wod"
-        android:layout_width="310dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="16dp"
-        android:text="Add"
+    <TextView
+        android:id="@+id/ed_update_ex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/datePicker" />
 
     <Button
+        android:id="@+id/btn_update_wod"
+        android:layout_width="310dp"
+        android:layout_height="62dp"
+        android:text="Add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_update_ex" />
+
+    <Button
         android:id="@+id/btn_delete_wod"
         android:layout_width="310dp"
         android:layout_height="62dp"
         android:layout_marginTop="8dp"
-        android:text="Delete"
         android:backgroundTint="@color/red"
+        android:text="Delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_update_wod" />

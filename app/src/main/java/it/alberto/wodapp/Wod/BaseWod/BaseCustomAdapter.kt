@@ -15,6 +15,7 @@ import it.alberto.wodapp.R
 import it.alberto.wodapp.Wod.UserWod.AddUserWodActivity
 import it.alberto.wodapp.Wod.UserWod.UpdateUserWod
 import java.util.*
+import kotlin.collections.ArrayList
 
 class BaseCustomAdapter internal constructor(
                     private val activity: Activity,
@@ -22,7 +23,9 @@ class BaseCustomAdapter internal constructor(
                     private val id: ArrayList<String>,
                     private val name: ArrayList<String>,
                     private val type: ArrayList<String>,
-                    private val date: ArrayList<String>) : RecyclerView.Adapter<BaseCustomAdapter.MyViewHolder>() {
+                    private val date: ArrayList<String>,
+                    private val exercises: ArrayList<String>
+                    ) : RecyclerView.Adapter<BaseCustomAdapter.MyViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -39,12 +42,14 @@ class BaseCustomAdapter internal constructor(
         holder.type_txt.text = type[position]
         holder.date_txt.text = date[position]
 
+
         holder.mainLayout.setOnClickListener {
             val intent = Intent(context, AddBaseWodActivity::class.java)
             intent.putExtra("id", java.lang.String.valueOf(id[position]))
             intent.putExtra("name", java.lang.String.valueOf(name[position]))
             intent.putExtra("type", java.lang.String.valueOf(type[position]))
             intent.putExtra("date", java.lang.String.valueOf(date[position]))
+            intent.putExtra("exercises", java.lang.String.valueOf(exercises[position]))
             activity.startActivityForResult(intent, 1)
         }
     }

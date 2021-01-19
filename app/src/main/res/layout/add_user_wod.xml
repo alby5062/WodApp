@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Wod.BaseWod.AddBaseWodActivity">
+    tools:context=".Wod.UserWod.AddUserWodActivity">
 
     <EditText
         android:id="@+id/ed_add_name"
@@ -57,18 +57,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
-    <LinearLayout
-        android:id="@+id/include"
-        android:layout_width="wrap_content"
-        android:layout_height="293dp"
-        android:layout_marginTop="16dp"
+
+    <EditText
+        android:id="@+id/insert_ex"
+        android:layout_width="303dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datePicker">
+        app:layout_constraintTop_toBottomOf="@+id/datePicker" />
 
-        <include layout="@layout/stop_watch" />
+    <Button
+        android:id="@+id/btn_add_exercise"
+        android:layout_width="50dp"
+        android:layout_height="41dp"
+        android:text="Y"
+        android:onClick="insertItemExercise"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/insert_ex"
+        app:layout_constraintTop_toTopOf="@+id/insert_ex" />
 
+    <LinearLayout
+        android:id="@+id/list_ex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/insert_ex"
+        android:orientation="vertical">
+
+        <include layout="@layout/exercise_recycle"/>
     </LinearLayout>
 
     <Button
@@ -79,7 +99,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/list_ex" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <!--<LinearLayout
+            android:id="@+id/include"
+            android:layout_width="wrap_content"
+            android:layout_height="293dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/datePicker">
+
+            <include layout="@layout/stop_watch" />
+
+        </LinearLayout>-->

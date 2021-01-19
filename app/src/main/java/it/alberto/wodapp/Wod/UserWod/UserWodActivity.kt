@@ -21,6 +21,7 @@ class UserWodActivity : AppCompatActivity() {
     lateinit var name:ArrayList<String>
     lateinit var type:ArrayList<String>
     lateinit var date:ArrayList<String>
+    lateinit var exercises: ArrayList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,10 +43,11 @@ class UserWodActivity : AppCompatActivity() {
         name = ArrayList()
         type = ArrayList()
         date = ArrayList()
+        exercises = ArrayList()
 
         storeDataInArrays(my_date.toString())
 
-        val customAdapter = UserCustomAdapter(this, this, id, name, type, date)
+        val customAdapter = UserCustomAdapter(this, this, id, name, type, date, exercises)
         recyclerView.adapter = customAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
@@ -63,6 +65,7 @@ class UserWodActivity : AppCompatActivity() {
                     name.add(cursor.getString(1))
                     type.add(cursor.getString(2))
                     date.add(cursor.getString(3))
+                    exercises.add(cursor.getString(4))
                 }
                 empty_image_view.visibility = View.GONE
                 no_data.visibility = View.GONE
