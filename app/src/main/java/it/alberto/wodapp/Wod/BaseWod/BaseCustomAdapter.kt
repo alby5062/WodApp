@@ -23,19 +23,16 @@ class BaseCustomAdapter internal constructor(
                     private val result: ArrayList<String>
                     ) : RecyclerView.Adapter<BaseCustomAdapter.MyViewHolder>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(context)
         val view: View = inflater.inflate(R.layout.custom_row_base, parent, false)
         return MyViewHolder(view)
     }
 
-
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         holder.name_txt.text = name[position]
         holder.type_txt.text = type[position]
-
 
         holder.mainLayout.setOnClickListener {
             val intent = Intent(context, AddBaseWodActivity::class.java)
@@ -56,16 +53,11 @@ class BaseCustomAdapter internal constructor(
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var name_txt: TextView = itemView.findViewById(R.id.name_txt_base)
         var type_txt: TextView = itemView.findViewById(R.id.type_txt_base)
-
         var mainLayout: LinearLayout = itemView.findViewById(R.id.mainLayout)
 
         init {
             val translate_anim = AnimationUtils.loadAnimation(context, R.anim.translate_anim)
             mainLayout.animation = translate_anim
         }
-
-
-
     }
-
 }

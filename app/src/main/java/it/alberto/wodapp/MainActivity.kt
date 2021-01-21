@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var name: String
     private lateinit var type:String
     private lateinit var date:String
+    private lateinit var result: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,12 +49,14 @@ class MainActivity : AppCompatActivity() {
         name = String()
         type = String()
         date = String()
+        result = String()
 
         takeLastUpload()
 
         last_name_insert.text = name
         last_type_insert.text = type
         last_date_insert.text = date
+        last_result_insert.text = result
 
         btn_stop_watch.setOnClickListener {
             startActivity(Intent(this, StopWatch::class.java))
@@ -83,10 +86,11 @@ class MainActivity : AppCompatActivity() {
                 include_last.visibility = View.GONE
             } else {
                 while (cursor.moveToNext()){
-                    id = cursor.getString(0)
                     name = (cursor.getString(1))
                     type = (cursor.getString(2))
                     date = (cursor.getString(3))
+                    result = (cursor.getString(5))
+
                 }
                 include_empty.visibility = View.GONE
             }

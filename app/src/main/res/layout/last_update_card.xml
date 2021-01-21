@@ -10,14 +10,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="15dp">
 
         <TextView
             android:id="@+id/title_last"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:layout_marginTop="16dp"
             android:text="Last update:"
             android:textAlignment="center"
             android:textSize="24sp"
@@ -31,38 +30,30 @@
             android:id="@+id/last_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             android:text="Name: "
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.161"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/title_last"
             app:layout_constraintTop_toBottomOf="@+id/title_last" />
 
         <TextView
             android:id="@+id/last_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             android:text="Type: "
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.155"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/last_name"
             app:layout_constraintTop_toBottomOf="@+id/last_name" />
 
         <TextView
             android:id="@+id/last_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="8dp"
             android:text="Date: "
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.154"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/last_type"
             app:layout_constraintTop_toBottomOf="@+id/last_type" />
 
 
@@ -70,12 +61,8 @@
             android:id="@+id/last_name_insert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:hint="Name"
+            android:layout_marginStart="8dp"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/last_name"
             app:layout_constraintTop_toTopOf="@+id/last_name" />
 
@@ -83,12 +70,8 @@
             android:id="@+id/last_type_insert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginEnd="16dp"
-            android:hint="Type"
+            android:layout_marginStart="8dp"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.004"
             app:layout_constraintStart_toEndOf="@+id/last_type"
             app:layout_constraintTop_toTopOf="@+id/last_type" />
 
@@ -96,16 +79,29 @@
             android:id="@+id/last_date_insert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:hint="Date"
+            android:layout_marginStart="8dp"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.013"
             app:layout_constraintStart_toEndOf="@+id/last_date"
             app:layout_constraintTop_toTopOf="@+id/last_date" />
+
+        <TextView
+            android:id="@+id/last_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Result:"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/last_date"
+            app:layout_constraintTop_toBottomOf="@+id/last_date" />
+
+        <TextView
+            android:id="@+id/last_result_insert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/last_result"
+            app:layout_constraintTop_toTopOf="@+id/last_result" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

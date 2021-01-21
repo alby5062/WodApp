@@ -15,8 +15,8 @@ import kotlinx.android.synthetic.main.add_base_wod.*
 
 class AddBaseWodActivity : AppCompatActivity() {
 
-    lateinit var id: String
-    lateinit var name: String
+    private lateinit var id: String
+    private lateinit var name: String
     private lateinit var type: String
     private lateinit var date: String
     private lateinit var exercises: String
@@ -36,7 +36,6 @@ class AddBaseWodActivity : AppCompatActivity() {
 
         btn_add_wod.setOnClickListener {
             val myDB = DatabaseHelper(this)
-            //id = ed_add_id.text.toString().trim { it <= ' ' }
             name = ed_add_name.text.toString().trim { it <= ' ' }
             type = ed_add_type.text.toString().trim { it <= ' ' }
             date = date_pik.trim { it <= ' ' }
@@ -63,11 +62,8 @@ class AddBaseWodActivity : AppCompatActivity() {
             result = intent.getStringExtra("result").toString()
 
             //Setting Intent Data
-            //ed_add_id.text = id
             ed_add_name.setText(name)
             ed_add_type.setText(type)
-            ed_add_result.setText(result)
-            //ed_add_date.setText(date)
             ed_add_ex.text = exercises
             Log.d("stev", "$name $type $date")
         } else {
@@ -79,22 +75,6 @@ class AddBaseWodActivity : AppCompatActivity() {
         super.onBackPressed()
         startActivity(Intent(this, BaseWodActivity::class.java))
     }
-
-    /*override fun onStart() {
-      super.onStart()
-      overridePendingTransition(
-          R.anim.slide_in_right,
-          R.anim.slide_out_left
-      )
-  }
-
-  override fun onBackPressed() {
-      super.onBackPressed()
-      overridePendingTransition(
-              R.anim.slide_in_left,
-              R.anim.slide_out_right
-      )
-  }*/
 
     override fun onSupportNavigateUp(): Boolean {
         startActivity(Intent(this, BaseWodActivity::class.java))

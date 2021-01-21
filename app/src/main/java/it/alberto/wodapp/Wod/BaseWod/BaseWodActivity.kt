@@ -21,13 +21,12 @@ import kotlinx.android.synthetic.main.list_base_wod.*
 class BaseWodActivity : AppCompatActivity() {
 
     private var myDB: DatabaseHelper? = null
-    lateinit var id: ArrayList<String>
-    lateinit var name:ArrayList<String>
-    lateinit var type:ArrayList<String>
-    lateinit var date:ArrayList<String>
-    lateinit var exercises: ArrayList<String>
-    lateinit var result: ArrayList<String>
-
+    private lateinit var id: ArrayList<String>
+    private lateinit var name:ArrayList<String>
+    private lateinit var type:ArrayList<String>
+    private lateinit var date:ArrayList<String>
+    private lateinit var exercises: ArrayList<String>
+    private lateinit var result: ArrayList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,22 +85,6 @@ class BaseWodActivity : AppCompatActivity() {
         super.onBackPressed()
         startActivity(Intent(this, MainActivity::class.java))
     }
-
-    /*override fun onStart() {
-      super.onStart()
-      overridePendingTransition(
-          R.anim.slide_in_right,
-          R.anim.slide_out_left
-      )
-  }
-
-  override fun onBackPressed() {
-      super.onBackPressed()
-      overridePendingTransition(
-              R.anim.slide_in_left,
-              R.anim.slide_out_right
-      )
-  }*/
 
     override fun onSupportNavigateUp(): Boolean {
         startActivity(Intent(this, MainActivity::class.java))
