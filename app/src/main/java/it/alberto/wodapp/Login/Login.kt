@@ -4,20 +4,15 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.text.TextUtils.*
+import android.text.TextUtils.isEmpty
 import android.util.Base64
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.facebook.*
-import com.facebook.login.LoginBehavior
-import com.facebook.login.LoginManager
-import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import it.alberto.wodapp.R
@@ -31,7 +26,7 @@ class Login : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
-    var callbackManager : CallbackManager? = null
+
 
 
     lateinit var email: String
@@ -68,13 +63,10 @@ class Login : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        callbackManager = CallbackManager.Factory.create()
+
 
         // GOOGLE LOGIN BUTTON
         sign_in_button.setOnClickListener { signIn() }
-
-        // FACEBOOK LOGIN BUTTON
-        facebook_login_button.setOnClickListener { facebookLogin() }
 
         // EMAIL LOGIN BUTTON
         login_button.setOnClickListener { loginEmail() }
@@ -85,7 +77,7 @@ class Login : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        callbackManager?.onActivityResult(requestCode, resultCode, data)
+
 
         if (requestCode == RC_SIGN_IN){
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
@@ -144,31 +136,6 @@ class Login : AppCompatActivity() {
                 }
         }else{
             Toast.makeText(applicationContext, "Insert email-password", Toast.LENGTH_LONG).show()
-        }
-    }
-
-
-    // FACEBOOK LOGIN
-    private fun facebookLogin(){
-        LoginManager.getInstance().loginBehavior = LoginBehavior.WEB_VIEW_ONLY
-        LoginManager.getInstance().logInWithReadPermissions(this, listOf("public_profile", "email"))
-        LoginManager.getInstance().registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
-            override fun onSuccess(result: LoginResult?) {
-                firebaseAuthWithFacebook(result)
-            }
-
-            override fun onCancel() {}
-
-            override fun onError(error: FacebookException?) {}
-        })
-    }
-
-    fun firebaseAuthWithFacebook(result: LoginResult?){
-        val credential = FacebookAuthProvider.getCredential(result?.accessToken?.token!!)
-        FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener { task ->
-            if(task.isSuccessful){
-                moveNextPage()
-            }
         }
     }
 

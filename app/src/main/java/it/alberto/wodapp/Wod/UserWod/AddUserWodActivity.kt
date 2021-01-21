@@ -36,8 +36,6 @@ class AddUserWodActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListe
 
         btn_add_wod.setOnClickListener{
             intent.putExtra("my_date", date)
-
-
             var listEx = ""
 
             for (i in exerciseList.indices){
@@ -47,10 +45,12 @@ class AddUserWodActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListe
 
             val myDB = DatabaseHelper(this)
             myDB.add(
+                //ed_add_id.text.toString().trim { it <= ' ' },
                 ed_add_name.text.toString().trim { it <= ' ' },
                 ed_add_type.text.toString().trim { it <= ' ' },
                 date.trim { it <= ' ' },
-                listEx.trim {it <= ' '}
+                listEx.trim {it <= ' '},
+                ed_add_result.text.toString().trim { it <= ' ' }
             )
             startActivity(intent)
         }
@@ -61,6 +61,7 @@ class AddUserWodActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListe
         val newItem = ExerciseItem(insert_ex.text.toString())
         exerciseList.add(index, newItem)
         adapter.notifyItemRemoved(index)
+        insert_ex.text.clear()
     }
 
     private fun lastUsed(){

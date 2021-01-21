@@ -14,7 +14,7 @@
 
     <!-- LOGIN -->
     <string name="login_button">login</string>
-    <string name="login_title">Login Page</string>
+    <string name="login_title">Login</string>
     <string name="email_login">E-mail</string>
     <string name="password_login">Password</string>
     <string name="id_web_client">911248194391-v200bnos12tcr3hb3sa08afb8720kprt.apps.googleusercontent.com</string>
@@ -24,13 +24,13 @@
     <string name="fb_login_protocol_scheme">fb218870129668216</string>
 
     <!-- SIGN UP -->
-    <string name="sign_up_name">Name</string>
-    <string name="sign_up_surname">Surname</string>
-    <string name="sign_up_age">Age</string>
-    <string name="sign_up_email">E-mail</string>
-    <string name="sign_up_password">Password</string>
+    <string name="sign_up_name">  Name</string>
+    <string name="sign_up_surname">  Surname</string>
+    <string name="sign_up_age">  Age</string>
+    <string name="sign_up_email">  E-mail</string>
+    <string name="sign_up_password">  Password</string>
     <string name="sign_up_button">Sign-Up</string>
-    <string name="sign_up_page">Sign Up Page</string>
+    <string name="sign_up_page">Sign Up</string>
     <string name="button_sign_up">Sign-Up</string>
 
     <!-- LOGOUT -->

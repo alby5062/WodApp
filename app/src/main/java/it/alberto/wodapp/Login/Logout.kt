@@ -3,7 +3,6 @@ package it.alberto.wodapp.Login
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.facebook.login.LoginManager
 import com.google.firebase.auth.FirebaseAuth
 import it.alberto.wodapp.MainActivity
 import it.alberto.wodapp.R
@@ -31,14 +30,10 @@ class Logout : AppCompatActivity() {
         // EMAIL LOGOUT
         FirebaseAuth.getInstance().signOut()
 
-        // FACEBOOK LOGIN SESSION STOP
-        LoginManager.getInstance().logOut()
-
         finish()
 
         startActivity(Intent(this, MainActivity::class.java))
     }
-
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

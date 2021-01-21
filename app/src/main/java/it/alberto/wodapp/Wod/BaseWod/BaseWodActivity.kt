@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import it.alberto.wodapp.Database.DatabaseHelper
 import it.alberto.wodapp.MainActivity
 import it.alberto.wodapp.R
+import it.alberto.wodapp.Wod.UserWod.AddUserWodActivity
 import it.alberto.wodapp.Wod.UserWod.CalendarActivity
 import kotlinx.android.synthetic.main.list_base_wod.*
 
@@ -25,6 +26,7 @@ class BaseWodActivity : AppCompatActivity() {
     lateinit var type:ArrayList<String>
     lateinit var date:ArrayList<String>
     lateinit var exercises: ArrayList<String>
+    lateinit var result: ArrayList<String>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +36,7 @@ class BaseWodActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         btn_add.setOnClickListener{
-            startActivity(Intent(this, AddBaseWodActivity::class.java))
+            startActivity(Intent(this, AddUserWodActivity::class.java))
         }
 
         myDB = DatabaseHelper(this)
@@ -43,10 +45,11 @@ class BaseWodActivity : AppCompatActivity() {
         type = ArrayList()
         date = ArrayList()
         exercises = ArrayList()
+        result = ArrayList()
 
         storeDataInArrays()
 
-        var customAdapter = BaseCustomAdapter(this, this, id, name, type, date, exercises)
+        var customAdapter = BaseCustomAdapter(this, this, id, name, type, date, exercises, result)
         recyclerView.adapter = customAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
@@ -71,6 +74,7 @@ class BaseWodActivity : AppCompatActivity() {
                     type.add(cursor.getString(2))
                     date.add(cursor.getString(3))
                     exercises.add(cursor.getString(4))
+                    result.add(cursor.getString(5))
                 }
                 empty_image_view.visibility = View.GONE
                 no_data.visibility = View.GONE

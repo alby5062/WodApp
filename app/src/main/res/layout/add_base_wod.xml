@@ -36,7 +36,10 @@
         android:id="@+id/ed_add_ex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text=" Exercises"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,22 +49,35 @@
         android:id="@+id/datePicker"
         android:layout_width="309dp"
         android:layout_height="160dp"
-        android:layout_marginTop="8dp"
         android:calendarViewShown="false"
         android:datePickerMode="spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_add_type" />
+        app:layout_constraintTop_toBottomOf="@+id/ed_add_result" />
 
     <Button
         android:id="@+id/btn_add_wod"
-        android:layout_width="310dp"
-        android:layout_height="62dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_add_ex" />
+
+    <EditText
+        android:id="@+id/ed_add_result"
+        android:layout_width="310dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="  Rounds/Time"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_add_type" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

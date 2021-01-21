@@ -21,7 +21,9 @@ class UserCustomAdapter internal constructor(
     private val name: ArrayList<String>,
     private val type: ArrayList<String>,
     private val date: ArrayList<String>,
-    private val exercises: ArrayList<String>
+    private val exercises: ArrayList<String>,
+    private val result: ArrayList<String>
+
 ) : RecyclerView.Adapter<UserCustomAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -31,7 +33,7 @@ class UserCustomAdapter internal constructor(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-       // holder.id_txt.text = id[position]
+        //holder.id_txt.text = id[position]
         holder.name_txt.text = name[position]
         holder.type_txt.text = type[position]
         holder.date_txt.text = date[position]
@@ -43,6 +45,7 @@ class UserCustomAdapter internal constructor(
             intent.putExtra("type", java.lang.String.valueOf(type[position]))
             intent.putExtra("date", java.lang.String.valueOf(date[position]))
             intent.putExtra("exercises", java.lang.String.valueOf(exercises[position]))
+            intent.putExtra("result", java.lang.String.valueOf(result[position]))
             activity.startActivityForResult(intent, 1)
         }
     }
@@ -52,7 +55,7 @@ class UserCustomAdapter internal constructor(
     }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-       // var id_txt: TextView = itemView.findViewById(R.id.id_txt)
+        //var id_txt: TextView = itemView.findViewById(R.id.id_txt)
         var name_txt: TextView = itemView.findViewById(R.id.name_txt)
         var type_txt: TextView = itemView.findViewById(R.id.type_txt)
         var date_txt: TextView = itemView.findViewById(R.id.date_txt)

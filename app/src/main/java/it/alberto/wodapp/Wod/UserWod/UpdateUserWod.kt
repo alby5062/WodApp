@@ -19,6 +19,7 @@ class UpdateUserWod : AppCompatActivity() {
     private lateinit var type: String
     private lateinit var date: String
     private lateinit var exercises: String
+    private lateinit var result: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +41,8 @@ class UpdateUserWod : AppCompatActivity() {
             name = ed_update_name.text.toString().trim { it <= ' ' }
             type = ed_update_type.text.toString().trim { it <= ' ' }
             date = date_pik.trim { it <= ' ' }
-            myDB.updateData(id, name, type, date)
+            result = ed_update_result.text.toString().trim { it <= ' ' }
+            myDB.updateData(id, name, type, date, result)
             intent.putExtra("my_date",date)
             startActivity(intent)
         }
@@ -60,12 +62,14 @@ class UpdateUserWod : AppCompatActivity() {
             type = intent.getStringExtra("type").toString()
             date = intent.getStringExtra("date").toString()
             exercises = intent.getStringExtra("exercises").toString()
+            result = intent.getStringExtra("result").toString()
 
             val mex = exercises.replace("\\n", "\n")
 
             //Setting Intent Data
             ed_update_name.setText(name)
             ed_update_type.setText(type)
+            ed_update_result.setText(result)
             //ed_update_date.setText(date)
             ed_update_ex.text = mex
             Log.d("stev", "$name $type $date")

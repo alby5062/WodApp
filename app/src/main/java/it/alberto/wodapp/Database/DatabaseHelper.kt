@@ -19,13 +19,15 @@ class DatabaseHelper(private val context: Context?) : SQLiteAssetHelper(context,
         onCreate(db)
     }
 
-    fun add(name: String?, type: String?, date: String, exercises: String) {
+    fun add(name: String?, type: String?, date: String, exercises: String, result_wod: String) {
         val db = this.writableDatabase
         val cv = ContentValues()
         cv.put(COLUMN_NAME, name)
         cv.put(COLUMN_TYPE, type)
         cv.put(COLUMN_DATE, date)
         cv.put(COLUMN_EX, exercises)
+        cv.put(COLUMN_RESULT_WOD, result_wod)
+
 
         val result = db.insert(TABLE_NAME_1, null, cv)
         if (result == -1L) {
@@ -55,12 +57,13 @@ class DatabaseHelper(private val context: Context?) : SQLiteAssetHelper(context,
         return cursor_base
     }
 
-    fun updateData(row_id: String, name: String?, type: String?, date: String?) {
+    fun updateData(row_id: String, name: String?, type: String?, date: String?, result_wod: String) {
         val db = this.writableDatabase
         val cv = ContentValues()
         cv.put(COLUMN_NAME, name)
         cv.put(COLUMN_TYPE, type)
         cv.put(COLUMN_DATE, date)
+        cv.put(COLUMN_RESULT_WOD, result_wod)
         val result = db.update(TABLE_NAME_1, cv, "_id=?", arrayOf(row_id)).toLong()
         if (result == -1L) {
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
@@ -84,6 +87,16 @@ class DatabaseHelper(private val context: Context?) : SQLiteAssetHelper(context,
         db.execSQL("DELETE FROM $TABLE_NAME_1")
     }
 
+    fun takeLastUpload(): Cursor?{
+        val db = this.readableDatabase
+        val query = "SELECT * from $TABLE_NAME_1 order by _id DESC limit 1"
+        var cursor_last: Cursor? = null
+        if(db != null) {
+            cursor_last = db.rawQuery(query, null)
+        }
+        return cursor_last
+    }
+
     companion object {
         private const val DATABASE_NAME = "wod_database.db"
         private const val DATABASE_VERSION = 3
@@ -94,6 +107,7 @@ class DatabaseHelper(private val context: Context?) : SQLiteAssetHelper(context,
         private const val COLUMN_TYPE = "type"
         private const val COLUMN_DATE = "date"
         private const val COLUMN_EX = "exercises"
+        private const val COLUMN_RESULT_WOD = "result"
     }
 }
 

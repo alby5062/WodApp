@@ -20,6 +20,7 @@ class AddBaseWodActivity : AppCompatActivity() {
     private lateinit var type: String
     private lateinit var date: String
     private lateinit var exercises: String
+    private lateinit var result: String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,11 +36,13 @@ class AddBaseWodActivity : AppCompatActivity() {
 
         btn_add_wod.setOnClickListener {
             val myDB = DatabaseHelper(this)
+            //id = ed_add_id.text.toString().trim { it <= ' ' }
             name = ed_add_name.text.toString().trim { it <= ' ' }
             type = ed_add_type.text.toString().trim { it <= ' ' }
             date = date_pik.trim { it <= ' ' }
-            exercises = ed_add_ex.text.toString().trim { it <= ' '}
-            myDB.add(name, type, date, exercises)
+            exercises = ed_add_ex.text.toString().trim { it <= ' ' }
+            result = ed_add_result.text.toString().trim { it <= ' ' }
+            myDB.add(name, type, date, exercises, result)
             val intent = Intent(this, UserWodActivity::class.java)
             intent.putExtra("my_date", date)
             startActivity(intent)
@@ -57,10 +60,13 @@ class AddBaseWodActivity : AppCompatActivity() {
             type = intent.getStringExtra("type").toString()
             date = intent.getStringExtra("date").toString()
             exercises = intent.getStringExtra("exercises").toString()
+            result = intent.getStringExtra("result").toString()
 
             //Setting Intent Data
+            //ed_add_id.text = id
             ed_add_name.setText(name)
             ed_add_type.setText(type)
+            ed_add_result.setText(result)
             //ed_add_date.setText(date)
             ed_add_ex.text = exercises
             Log.d("stev", "$name $type $date")

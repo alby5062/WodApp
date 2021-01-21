@@ -19,13 +19,12 @@ class CalendarActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val tvw = findViewById<View>(R.id.textView1) as TextView
         val picker = findViewById<View>(R.id.datePicker) as DatePicker
         val btnGet = findViewById<View>(R.id.button1) as Button
         btnGet.setOnClickListener {
             val date =
                 picker.dayOfMonth.toString() + "/" + (picker.month + 1).toString() + "/" + picker.year
-            tvw.text = date
+
 
             val intent = Intent(this, UserWodActivity::class.java)
             intent.putExtra("my_date", date)

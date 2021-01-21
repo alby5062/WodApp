@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -24,65 +25,42 @@
             app:menu="@menu/menu_main"
             app:popupTheme="@style/Theme.WodApp.PopupOverlay" />
 
-
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-        android:id="@+id/last_name"
+    <include
+        android:id="@+id/include_last"
+        layout="@layout/last_update_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:hint="Name"
-        android:textSize="24sp"
+        android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.148"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
-    <TextView
-        android:id="@+id/last_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Type"
-        android:textSize="24sp"
+    <include
+        android:id="@+id/include_empty"
+        layout="@layout/empty_last_card"
+        android:layout_width="276dp"
+        android:layout_height="104dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/last_name" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
-    <TextView
-        android:id="@+id/last_date"
+    <include
+        android:id="@+id/include_button"
+        layout="@layout/utility_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Date"
-        android:textSize="24sp"
+        android:layout_marginTop="348dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/last_type" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="timer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/last_date" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/stop_watch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Stop Watch"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timer" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add"
