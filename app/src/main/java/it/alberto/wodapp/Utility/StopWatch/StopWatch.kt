@@ -109,6 +109,22 @@ class StopWatch : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        finish()
+        overridePendingTransition(
+            R.anim.slide_in_left,
+            R.anim.slide_out_right
+        )
+    }
+
+    override fun onStart() {
+        super.onStart()
+        overridePendingTransition(
+            R.anim.slide_in_right,
+            R.anim.slide_out_left
+        )
+    }
+
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true

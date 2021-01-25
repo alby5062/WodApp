@@ -35,6 +35,7 @@ class BaseWodActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         btn_add.setOnClickListener{
+            finish()
             startActivity(Intent(this, AddUserWodActivity::class.java))
         }
 
@@ -82,12 +83,12 @@ class BaseWodActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
-        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        startActivity(Intent(this, MainActivity::class.java))
+        onBackPressed()
+        //startActivity(Intent(this, MainActivity::class.java))
         return true
     }
 }

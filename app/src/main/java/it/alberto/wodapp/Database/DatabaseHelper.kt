@@ -3,6 +3,7 @@ package it.alberto.wodapp.Database
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
+import android.database.DatabaseUtils
 import android.database.sqlite.SQLiteDatabase
 import android.widget.Toast
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper
@@ -96,6 +97,14 @@ class DatabaseHelper(private val context: Context?) : SQLiteAssetHelper(context,
         }
         return cursor_last
     }
+
+    fun takeCountWod(my_date: String): Int{
+        val db = this.readableDatabase
+        val query = "SELECT COUNT(*) FROM $TABLE_NAME_1 WHERE date LIKE '%$my_date%'"
+        return DatabaseUtils.longForQuery(db, query, null).toInt()
+    }
+
+
 
     companion object {
         private const val DATABASE_NAME = "wod_database.db"

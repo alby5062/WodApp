@@ -109,29 +109,16 @@ class UserWodActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
-        startActivity(Intent(this, CalendarActivity::class.java))
         finish()
+        startActivityForResult(Intent(this, CalendarActivity::class.java), 1)
+        //startActivity(Intent(this, CalendarActivity::class.java))
     }
 
-    /*override fun onStart() {
-      super.onStart()
-      overridePendingTransition(
-          R.anim.slide_in_right,
-          R.anim.slide_out_left
-      )
-  }
 
-  override fun onBackPressed() {
-      super.onBackPressed()
-      overridePendingTransition(
-              R.anim.slide_in_left,
-              R.anim.slide_out_right
-      )
-  }*/
+
 
     override fun onSupportNavigateUp(): Boolean {
-        startActivity(Intent(this, CalendarActivity::class.java))
+        onBackPressed()
         return true
     }
 }

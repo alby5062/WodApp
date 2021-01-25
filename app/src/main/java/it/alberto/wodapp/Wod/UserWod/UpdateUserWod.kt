@@ -31,7 +31,7 @@ class UpdateUserWod : AppCompatActivity() {
 
         getAndSetIntentData()
 
-        val intent = Intent(this, UserWodActivity::class.java)
+        //val intent = Intent(this, UserWodActivity::class.java)
 
         btn_update_wod.setOnClickListener {
 
@@ -43,8 +43,9 @@ class UpdateUserWod : AppCompatActivity() {
             date = date_pik.trim { it <= ' ' }
             result = ed_update_result.text.toString().trim { it <= ' ' }
             myDB.updateData(id, name, type, date, result)
-            intent.putExtra("my_date",date)
-            startActivity(intent)
+            //intent.putExtra("my_date",date)
+            //startActivity(intent)
+            onBackPressed()
         }
 
         btn_delete_wod.setOnClickListener{
@@ -96,33 +97,18 @@ class UpdateUserWod : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
         val intent = Intent(this, UserWodActivity::class.java)
         intent.putExtra("my_date", date)
         startActivity(intent)
         finish()
+        overridePendingTransition(
+            R.anim.slide_in_left,
+            R.anim.slide_out_right
+        )
     }
 
-    /*override fun onStart() {
-      super.onStart()
-      overridePendingTransition(
-          R.anim.slide_in_right,
-          R.anim.slide_out_left
-      )
-  }
-
-  override fun onBackPressed() {
-      super.onBackPressed()
-      overridePendingTransition(
-              R.anim.slide_in_left,
-              R.anim.slide_out_right
-      )
-  }*/
-
     override fun onSupportNavigateUp(): Boolean {
-        val intent = Intent(this, UserWodActivity::class.java)
-        intent.putExtra("my_date", date)
-        startActivity(intent)
+        onBackPressed()
         return true
     }
 }

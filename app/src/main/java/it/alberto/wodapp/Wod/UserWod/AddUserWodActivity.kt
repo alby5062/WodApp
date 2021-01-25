@@ -2,12 +2,15 @@ package it.alberto.wodapp.Wod.UserWod
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.common.base.MoreObjects
 import it.alberto.wodapp.Database.DatabaseHelper
+import it.alberto.wodapp.InputCheck
 import it.alberto.wodapp.R
 import it.alberto.wodapp.Wod.UserWod.Exercise.ExerciseAdapter
 import it.alberto.wodapp.Wod.UserWod.Exercise.ExerciseItem
@@ -19,6 +22,9 @@ class AddUserWodActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListe
 
     private val exerciseList = ArrayList<ExerciseItem>()
     private val adapter = ExerciseAdapter(exerciseList, this)
+    private lateinit var name: String
+    private lateinit var type: String
+    private lateinit var result: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +40,7 @@ class AddUserWodActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListe
         recycler_view_exercise.layoutManager = LinearLayoutManager(this)
         recycler_view_exercise.setHasFixedSize(true)
 
+
         btn_add_wod.setOnClickListener{
             intent.putExtra("my_date", date)
             var listEx = ""
@@ -41,27 +48,39 @@ class AddUserWodActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListe
             for (i in exerciseList.indices){
                 listEx += exerciseList[i].ex + "\\n"
             }
-            println(listEx)
 
-            val myDB = DatabaseHelper(this)
-            myDB.add(
-                //ed_add_id.text.toString().trim { it <= ' ' },
-                ed_add_name.text.toString().trim { it <= ' ' },
-                ed_add_type.text.toString().trim { it <= ' ' },
-                date.trim { it <= ' ' },
-                listEx.trim {it <= ' '},
-                ed_add_result.text.toString().trim { it <= ' ' }
-            )
-            startActivity(intent)
+            name = ed_add_name.text.toString()
+            type = ed_add_type.text.toString()
+            result = ed_add_result.text.toString()
+
+            if (InputCheck().inputWorkout(name, type, result)){
+                val myDB = DatabaseHelper(this)
+                myDB.add(
+                    name.trim { it <= ' ' },
+                    type.trim { it <= ' ' },
+                    date.trim { it <= ' ' },
+                    listEx.trim {it <= ' '},
+                    result.trim { it <= ' ' }
+                )
+                startActivity(intent)
+                onBackPressed()
+            } else {
+                Toast.makeText(this, "Insert all data.", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
     fun insertItemExercise(view: View){
         val index = adapter.itemCount
-        val newItem = ExerciseItem(insert_ex.text.toString())
-        exerciseList.add(index, newItem)
-        adapter.notifyItemRemoved(index)
-        insert_ex.text.clear()
+        val edit_ex = insert_ex.text.toString()
+        if (InputCheck().inputExercise(edit_ex)){
+            val newItem = ExerciseItem(edit_ex)
+            exerciseList.add(index, newItem)
+            adapter.notifyItemRemoved(index)
+            insert_ex.text.clear()
+        } else {
+            Toast.makeText(this, "No exercise.", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun lastUsed(){
@@ -72,12 +91,16 @@ class AddUserWodActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListe
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
         lastUsed()
+        finish()
+        overridePendingTransition(
+            R.anim.slide_in_left,
+            R.anim.slide_out_right
+        )
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        lastUsed()
+        onBackPressed()
         return true
     }
 

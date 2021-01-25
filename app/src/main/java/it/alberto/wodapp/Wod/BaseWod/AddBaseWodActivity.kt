@@ -8,6 +8,7 @@ import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import it.alberto.wodapp.Database.DatabaseHelper
+import it.alberto.wodapp.InputCheck
 import it.alberto.wodapp.R
 import it.alberto.wodapp.Wod.UserWod.UserWodActivity
 import kotlinx.android.synthetic.main.add_base_wod.*
@@ -35,16 +36,23 @@ class AddBaseWodActivity : AppCompatActivity() {
         getAndSetIntentData()
 
         btn_add_wod.setOnClickListener {
-            val myDB = DatabaseHelper(this)
-            name = ed_add_name.text.toString().trim { it <= ' ' }
-            type = ed_add_type.text.toString().trim { it <= ' ' }
-            date = date_pik.trim { it <= ' ' }
-            exercises = ed_add_ex.text.toString().trim { it <= ' ' }
-            result = ed_add_result.text.toString().trim { it <= ' ' }
-            myDB.add(name, type, date, exercises, result)
-            val intent = Intent(this, UserWodActivity::class.java)
-            intent.putExtra("my_date", date)
-            startActivity(intent)
+
+            val result_ed = ed_add_result.text.toString()
+            if (InputCheck().inputResult(result_ed)) {
+                val myDB = DatabaseHelper(this)
+                name = ed_add_name.text.toString().trim { it <= ' ' }
+                type = ed_add_type.text.toString().trim { it <= ' ' }
+                date = date_pik.trim { it <= ' ' }
+                exercises = ed_add_ex.text.toString().trim { it <= ' ' }
+                result = ed_add_result.text.toString().trim { it <= ' ' }
+                myDB.add(name, type, date, exercises, result)
+                val intent = Intent(this, UserWodActivity::class.java)
+                intent.putExtra("my_date", date)
+                startActivity(intent)
+                onBackPressed()
+            } else {
+                Toast.makeText(this, "Insert result", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -65,19 +73,17 @@ class AddBaseWodActivity : AppCompatActivity() {
             ed_add_name.setText(name)
             ed_add_type.setText(type)
             ed_add_ex.text = exercises
-            Log.d("stev", "$name $type $date")
         } else {
             Toast.makeText(this, "No data.", Toast.LENGTH_SHORT).show()
         }
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
-        startActivity(Intent(this, BaseWodActivity::class.java))
+        finish()
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        startActivity(Intent(this, BaseWodActivity::class.java))
+        onBackPressed()
         return true
     }
 }

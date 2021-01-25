@@ -9,7 +9,9 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import it.alberto.wodapp.Database.DatabaseHelper
 import it.alberto.wodapp.Login.InfoActivity
 import it.alberto.wodapp.Login.Login
@@ -30,6 +32,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var type:String
     private lateinit var date:String
     private lateinit var result: String
+    private var userLogged: FirebaseUser? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,11 +62,21 @@ class MainActivity : AppCompatActivity() {
         last_date_insert.text = date
         last_result_insert.text = result
 
-        btn_stop_watch.setOnClickListener {
+        userLogged = FirebaseAuth.getInstance().currentUser
+
+        if (userLogged != null){
+            include_stop_watch.visibility = View.VISIBLE
+            include_timer.visibility = View.VISIBLE
+        } else {
+            include_stop_watch.visibility = View.GONE
+            include_timer.visibility = View.GONE
+        }
+
+        include_stop_watch.setOnClickListener {
             startActivity(Intent(this, StopWatch::class.java))
         }
 
-        btn_timer.setOnClickListener {
+        include_timer.setOnClickListener {
             startActivity(Intent(this, TimerActivity::class.java))
         }
 
@@ -75,6 +89,10 @@ class MainActivity : AppCompatActivity() {
         history.setOnClickListener {
             this.startActivity(Intent(this, CalendarActivity::class.java))
             finish()
+        }
+
+        include_last.setOnClickListener {
+
         }
     }
 
@@ -99,8 +117,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // [START check_current_user]
-        val user = FirebaseAuth.getInstance().currentUser
-        if (user != null){
+        userLogged = FirebaseAuth.getInstance().currentUser
+        if (userLogged != null){
             menuInflater.inflate(R.menu.menu_logged, menu)
         } else {
             menuInflater.inflate(R.menu.menu_main, menu)
@@ -123,7 +141,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         R.id.action_logout_menu -> {
-            this.startActivity(Intent(this, Logout::class.java))
+            //this.startActivity(Intent(this, Logout::class.java))
+            Logout().logout()
+            startActivity(Intent(this, MainActivity::class.java))
             true
         }
         else -> {

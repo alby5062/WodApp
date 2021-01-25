@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.text.TextUtils.isEmpty
 import android.util.Base64
 import android.util.Log
 import android.widget.Toast
@@ -15,19 +14,17 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import it.alberto.wodapp.InputCheck
+import it.alberto.wodapp.MainActivity
 import it.alberto.wodapp.R
 import kotlinx.android.synthetic.main.activity_login.*
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
-
 class Login : AppCompatActivity() {
-
 
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
-
-
 
     lateinit var email: String
     lateinit var password: String
@@ -55,15 +52,11 @@ class Login : AppCompatActivity() {
         catch (e: PackageManager.NameNotFoundException) {}
         catch (e: NoSuchAlgorithmException) {}
 
-        //val user = auth.currentUser
-
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
 
         googleSignInClient = GoogleSignIn.getClient(this,gso)
 
         auth = FirebaseAuth.getInstance()
-
-
 
         // GOOGLE LOGIN BUTTON
         sign_in_button.setOnClickListener { signIn() }
@@ -100,9 +93,9 @@ class Login : AppCompatActivity() {
 
         auth.signInWithCredential(credential).addOnCompleteListener(this){task ->
             if (task.isSuccessful){
-                val user = auth.currentUser
-                val intent= Intent(this, Logout::class.java)
-                startActivity(intent)
+                //val intent= Intent(this, Logout::class.java)
+                //startActivity(intent)
+                moveNextPage()
             }
         }
     }
@@ -118,7 +111,7 @@ class Login : AppCompatActivity() {
         email = login_email.text.toString()
         password = login_password.text.toString()
 
-        if (inputCheck(email, password)){
+        if (InputCheck().inputLogin(email, password)){
 
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
@@ -134,23 +127,20 @@ class Login : AppCompatActivity() {
                         ).show()
                     }
                 }
-        }else{
+        } else {
             Toast.makeText(applicationContext, "Insert email-password", Toast.LENGTH_LONG).show()
         }
     }
 
-    private fun inputCheck(email: String, password: String): Boolean{
-        return !(isEmpty((email)) && isEmpty(password))
+    override fun onBackPressed() {
+        finish()
+        overridePendingTransition(
+            R.anim.slide_in_left,
+            R.anim.slide_out_right
+        )
     }
 
-    private fun moveNextPage(){
-        var currentUser = FirebaseAuth.getInstance().currentUser
-        if(currentUser != null){
-            startActivity(Intent(this, Logout::class.java))
-        }
-    }
-
-    /*override fun onStart() {
+    override fun onStart() {
         super.onStart()
         overridePendingTransition(
             R.anim.slide_in_right,
@@ -158,13 +148,12 @@ class Login : AppCompatActivity() {
         )
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        overridePendingTransition(
-                R.anim.slide_in_left,
-                R.anim.slide_out_right
-        )
-    }*/
+    private fun moveNextPage(){
+        var currentUser = FirebaseAuth.getInstance().currentUser
+        if(currentUser != null){
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
