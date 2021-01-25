@@ -20,6 +20,7 @@ import it.alberto.wodapp.Utility.StopWatch.StopWatch
 import it.alberto.wodapp.Utility.Timer.TimerActivity
 import it.alberto.wodapp.Wod.BaseWod.BaseWodActivity
 import it.alberto.wodapp.Wod.UserWod.CalendarActivity
+import it.alberto.wodapp.Wod.UserWod.DetailLastHome
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.last_update_card.*
 import kotlinx.android.synthetic.main.utility_card.*
@@ -92,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         include_last.setOnClickListener {
-
+            this.startActivity(Intent(this, DetailLastHome::class.java))
         }
     }
 

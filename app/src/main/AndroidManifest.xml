@@ -74,9 +74,10 @@
 
         <activity android:name=".Login.DashboardActivity" />
         <activity android:name=".Login.Login" />
-        <activity android:name=".Login.Logout" />
         <activity android:name=".Login.SignUp" />
         <activity android:name=".Login.InfoActivity"/>
+
+        <activity android:name=".Wod.UserWod.DetailLastHome"/>
 
     </application>
 
