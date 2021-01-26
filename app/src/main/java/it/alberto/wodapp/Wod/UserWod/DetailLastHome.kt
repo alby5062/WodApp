@@ -38,11 +38,13 @@ class DetailLastHome : AppCompatActivity() {
 
         title = name
 
+        val mex = exercise.replace("\\n", "\n")
+
         detail_last_name.text = name
         detail_last_type.text = type
         detail_last_date.text = date
         detail_last_result.text = result
-        detail_last_exercise.text = exercise
+        detail_last_exercise.text = mex
 
         btn_detail_last.setOnClickListener {
             confirmDialog()
@@ -57,7 +59,12 @@ class DetailLastHome : AppCompatActivity() {
         ) { _, _ ->
             val myDB = DatabaseHelper(this)
             myDB.deleteOneRow(id)
+            finish()
             startActivity(Intent(this, MainActivity::class.java))
+            overridePendingTransition(
+                R.anim.slide_in_left,
+                R.anim.slide_out_right
+            )
         }
         builder.setNegativeButton("No"
         ) { _, _ -> }
@@ -77,6 +84,16 @@ class DetailLastHome : AppCompatActivity() {
                 result = (cursor.getString(5))
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+        startActivity(Intent(Intent(this, MainActivity::class.java)))
+        overridePendingTransition(
+            R.anim.slide_in_left,
+            R.anim.slide_out_right
+        )
     }
 
     override fun onSupportNavigateUp(): Boolean {

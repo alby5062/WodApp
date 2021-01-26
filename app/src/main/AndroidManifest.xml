@@ -28,17 +28,19 @@
         <!-- BASE WOD ACTIVITY -->
         <activity
             android:name=".Wod.BaseWod.BaseWodActivity"
-            android:label="BaseWod" />
+            android:label="Sample workouts" />
         <activity
             android:name=".Wod.BaseWod.AddBaseWodActivity"
-            android:label="Add Wod" />
+            android:label="Set your workout" />
+        <activity android:name=".Wod.BaseWod.AddBaseToUser"
+            android:label="Set your workout"/>
         <!-- USER WOD ACTIVITY -->
         <activity
             android:name=".Wod.UserWod.UserWodActivity"
-            android:label="UserWod" />
+            android:label="Your workouts" />
         <activity
             android:name=".Wod.UserWod.AddUserWodActivity"
-            android:label="Add Wod" />
+            android:label="Set your workout" />
         <activity android:name=".Wod.UserWod.UpdateUserWod" />
 
         <activity android:name=".Wod.UserWod.CalendarActivity"

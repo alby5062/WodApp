@@ -24,10 +24,7 @@ class UserWodActivity : AppCompatActivity() {
     lateinit var date:ArrayList<String>
     lateinit var exercises: ArrayList<String>
     lateinit var result: ArrayList<String>
-
     private var my_date: String? = null
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,13 +36,11 @@ class UserWodActivity : AppCompatActivity() {
 
         btn_add.setOnClickListener{
             val intent = Intent(this, AddUserWodActivity::class.java)
-            //intent.putExtra("my_date", my_date)
             startActivityForResult(intent, 1)
             overridePendingTransition(
                 R.anim.slide_in_right,
                 R.anim.slide_out_left
             )
-            //finish()
         }
 
         myDB = DatabaseHelper(this)
@@ -55,7 +50,6 @@ class UserWodActivity : AppCompatActivity() {
         date = ArrayList()
         exercises = ArrayList()
         result = ArrayList()
-
 
         storeDataInArrays(my_date.toString())
 

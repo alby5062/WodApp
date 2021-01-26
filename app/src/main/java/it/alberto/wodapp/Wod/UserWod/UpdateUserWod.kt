@@ -31,8 +31,6 @@ class UpdateUserWod : AppCompatActivity() {
 
         getAndSetIntentData()
 
-
-
         btn_update_wod.setOnClickListener {
 
             val date_pik = picker.dayOfMonth.toString() + "/" + (picker.month + 1).toString() + "/" + picker.year

@@ -149,6 +149,10 @@ class Login : AppCompatActivity() {
         var currentUser = FirebaseAuth.getInstance().currentUser
         if(currentUser != null){
             startActivity(Intent(this, MainActivity::class.java))
+            overridePendingTransition(
+                R.anim.slide_in_left,
+                R.anim.slide_out_right
+            )
             finish()
         }
     }

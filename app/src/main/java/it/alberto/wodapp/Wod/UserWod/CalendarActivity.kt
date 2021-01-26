@@ -63,55 +63,7 @@ class CalendarActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        startActivity(Intent(this, MainActivity::class.java))
+        onBackPressed()
         return true
     }
 }
-
-    /*override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.calendar_activity)
-
-        val events: MutableList<EventDay> = ArrayList()
-
-        calendarView.setOnDayClickListener(object : OnDayClickListener {
-            override fun onDayClick(eventDay: EventDay) {
-                val clickedDayCalendar: Calendar = eventDay.calendar
-                events.add(EventDay(clickedDayCalendar, R.drawable.ic_dumbbell))
-                calendarView.setEvents(events)
-
-                nextActivity()
-
-            }
-        })
-
-        calendarView.setOnDayClickListener(object : OnDayClickListener {
-            override fun onDayClick(eventDay: EventDay) {
-                val clickedDayCalendar: Calendar = eventDay.calendar
-
-                events.add(EventDay(clickedDayCalendar, R.drawable.ic_dumbbell))
-                calendarView.setEvents(events)
-
-                println(eventDay)
-
-                //var my_date_format = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
-                var my_date = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-
-                val day = Calendar.DAY_OF_MONTH
-                //val month =
-                val year = Calendar.YEAR
-
-
-
-
-
-
-                //val date = "" + clickedDayCalendar.get(day) + "/" + (clickedDayCalendar.get(month + 1)) + "/" + clickedDayCalendar.get( year)
-
-                //Toast.makeText(this@CalendarActivity, date, Toast.LENGTH_LONG).show()
-
-                //val intent = Intent(this@CalendarActivity, UserWodActivity::class.java)
-                //intent.putExtra("my_date", date)
-                //startActivity(intent)
-            }
-        })*/

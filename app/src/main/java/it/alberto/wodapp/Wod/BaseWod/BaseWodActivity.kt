@@ -36,7 +36,7 @@ class BaseWodActivity : AppCompatActivity() {
 
         btn_add.setOnClickListener{
             finish()
-            startActivity(Intent(this, AddUserWodActivity::class.java))
+            startActivity(Intent(this, AddBaseToUser::class.java))
             overridePendingTransition(
                 R.anim.slide_in_right,
                 R.anim.slide_out_left
@@ -61,7 +61,9 @@ class BaseWodActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, @Nullable data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1) {
-            recreate()
+            finish()
+            startActivity(Intent(this, MainActivity::class.java))
+            //recreate()
         }
     }
 
@@ -95,7 +97,6 @@ class BaseWodActivity : AppCompatActivity() {
             R.anim.slide_out_right
         )
     }
-
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

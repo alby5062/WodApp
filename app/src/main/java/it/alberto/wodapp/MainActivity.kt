@@ -112,7 +112,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         include_last.setOnClickListener {
+            finish()
             this.startActivity(Intent(this, DetailLastHome::class.java))
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
     }
 

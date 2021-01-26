@@ -43,7 +43,6 @@ class BaseCustomAdapter internal constructor(
             intent.putExtra("exercises", java.lang.String.valueOf(exercises[position]))
             intent.putExtra("result", java.lang.String.valueOf(result[position]))
             activity.startActivityForResult(intent, 1)
-
         }
     }
 

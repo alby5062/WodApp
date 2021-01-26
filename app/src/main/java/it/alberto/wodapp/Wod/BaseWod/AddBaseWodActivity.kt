@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import it.alberto.wodapp.Database.DatabaseHelper
 import it.alberto.wodapp.InputCheck
+import it.alberto.wodapp.MainActivity
 import it.alberto.wodapp.R
 import it.alberto.wodapp.Wod.UserWod.UserWodActivity
 import kotlinx.android.synthetic.main.add_base_wod.*
@@ -48,11 +49,10 @@ class AddBaseWodActivity : AppCompatActivity() {
                 result = ed_add_result.text.toString().trim { it <= ' ' }
                 myDB.add(name, type, date, exercises, result)
 
-                val intent = Intent(this, UserWodActivity::class.java)
-                intent.putExtra("my_date", date)
-                startActivity(intent)
-
+                val intent = Intent(this, BaseWodActivity::class.java)
+                //intent.putExtra("my_date", date)
                 finish()
+                setResult(1, intent)
                 overridePendingTransition(
                     R.anim.slide_in_left,
                     R.anim.slide_out_right

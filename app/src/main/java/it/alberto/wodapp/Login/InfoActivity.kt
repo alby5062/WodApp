@@ -67,8 +67,8 @@ class InfoActivity : AppCompatActivity() {
             finish()
             startActivity(Intent(this, MainActivity::class.java))
             overridePendingTransition(
-                R.anim.slide_in_right,
-                R.anim.slide_out_left
+                R.anim.slide_in_left,
+                R.anim.slide_out_right
             )
         }
 
@@ -85,8 +85,8 @@ class InfoActivity : AppCompatActivity() {
             finish()
             startActivity(Intent(this, MainActivity::class.java))
             overridePendingTransition(
-                R.anim.slide_in_right,
-                R.anim.slide_out_left
+                R.anim.slide_in_left,
+                R.anim.slide_out_right
             )
 
         }
@@ -123,6 +123,10 @@ class InfoActivity : AppCompatActivity() {
             //Refresh Activity
             finish()
             startActivity(Intent(this, Login::class.java))
+            overridePendingTransition(
+                R.anim.slide_in_left,
+                R.anim.slide_out_right
+            )
         }
         builder.setNegativeButton("No"
         ) { _, _ -> }
@@ -148,6 +152,10 @@ class InfoActivity : AppCompatActivity() {
                 }
             finish()
             startActivity(Intent(this, Login::class.java))
+            overridePendingTransition(
+                R.anim.slide_in_left,
+                R.anim.slide_out_right
+            )
 
         }
         builder.setNegativeButton("No"
