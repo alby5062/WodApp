@@ -1,6 +1,5 @@
 package it.alberto.wodapp.Login
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.RadioButton
@@ -36,11 +35,7 @@ class SignUp : AppCompatActivity() {
 
         sign_up_button_done.setOnClickListener{
             signUp()
-            finish()
-            overridePendingTransition(
-                R.anim.slide_in_left,
-                R.anim.slide_out_right
-            )
+            onBackPressed()
         }
     }
 
@@ -60,8 +55,8 @@ class SignUp : AppCompatActivity() {
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        startActivity(Intent(this, Login::class.java))
-                        sendEmailVerification()
+                        //startActivity(Intent(this, Login::class.java))
+                        //sendEmailVerification()
                         val uid: String = FirebaseAuth.getInstance().uid.toString()
                         FirebaseDatabaseHelper().saveData(uid, name, surname, age, gender, email, password)
                     }
@@ -80,26 +75,16 @@ class SignUp : AppCompatActivity() {
                 if (task.isSuccessful) {
                     Log.d(TAG, "Email sent.")
                     Toast.makeText(applicationContext, "Confirm your account. Email sent.", Toast.LENGTH_SHORT).show()
-
                 }
             }
         // [END send_email_verification]
     }
 
     override fun onBackPressed() {
-        finish()
+        super.onBackPressed()
         overridePendingTransition(
             R.anim.slide_in_left,
             R.anim.slide_out_right
-        )
-
-    }
-
-    override fun onStart() {
-        super.onStart()
-        overridePendingTransition(
-            R.anim.slide_in_right,
-            R.anim.slide_out_left
         )
     }
 

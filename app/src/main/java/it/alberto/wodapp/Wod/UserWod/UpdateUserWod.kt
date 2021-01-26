@@ -31,7 +31,7 @@ class UpdateUserWod : AppCompatActivity() {
 
         getAndSetIntentData()
 
-        //val intent = Intent(this, UserWodActivity::class.java)
+
 
         btn_update_wod.setOnClickListener {
 
@@ -43,8 +43,6 @@ class UpdateUserWod : AppCompatActivity() {
             date = date_pik.trim { it <= ' ' }
             result = ed_update_result.text.toString().trim { it <= ' ' }
             myDB.updateData(id, name, type, date, result)
-            //intent.putExtra("my_date",date)
-            //startActivity(intent)
             onBackPressed()
         }
 
@@ -87,9 +85,10 @@ class UpdateUserWod : AppCompatActivity() {
         ) { _, _ ->
             val myDB = DatabaseHelper(this)
             myDB.deleteOneRow(id)
-            val intent = Intent(this, UserWodActivity::class.java)
-            intent.putExtra("my_date", date)
-            startActivity(intent)
+            //val intent = Intent(this, UserWodActivity::class.java)
+            //intent.putExtra("my_date", date)
+            //startActivity(intent)
+            onBackPressed()
         }
         builder.setNegativeButton("No"
         ) { _, _ -> }
@@ -97,9 +96,12 @@ class UpdateUserWod : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        super.onBackPressed()
         val intent = Intent(this, UserWodActivity::class.java)
-        intent.putExtra("my_date", date)
-        startActivity(intent)
+        //intent.putExtra("my_date", date)
+        //startActivityForResult(intent, 1)
+        //intent.putExtra("my_date", date)
+        setResult(1, intent)
         finish()
         overridePendingTransition(
             R.anim.slide_in_left,

@@ -10,9 +10,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import it.alberto.wodapp.Database.DatabaseHelper
+import it.alberto.wodapp.MainActivity
 import it.alberto.wodapp.R
-import it.alberto.wodapp.Wod.BaseWod.BaseWodActivity
 import kotlinx.android.synthetic.main.list_base_wod.*
+
 
 class UserWodActivity : AppCompatActivity() {
 
@@ -24,19 +25,27 @@ class UserWodActivity : AppCompatActivity() {
     lateinit var exercises: ArrayList<String>
     lateinit var result: ArrayList<String>
 
+    private var my_date: String? = null
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.list_user_wod)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val my_date: String? = intent.getStringExtra("my_date")
+        my_date = intent.getStringExtra("my_date")
 
         btn_add.setOnClickListener{
             val intent = Intent(this, AddUserWodActivity::class.java)
-            intent.putExtra("my_date",my_date)
-            startActivity(intent)
-            finish()
+            //intent.putExtra("my_date", my_date)
+            startActivityForResult(intent, 1)
+            overridePendingTransition(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left
+            )
+            //finish()
         }
 
         myDB = DatabaseHelper(this)
@@ -99,23 +108,33 @@ class UserWodActivity : AppCompatActivity() {
             val myDB = DatabaseHelper(this)
             myDB.deleteAllData()
             //Refresh Activity
-            val intent = Intent(this, UserWodActivity::class.java)
-            startActivity(intent)
             finish()
+            startActivity(intent)
+            overridePendingTransition(
+                R.anim.fade_in,
+                R.anim.fade_out
+            )
         }
         builder.setNegativeButton("No"
         ) { _, _ -> }
         builder.create().show()
     }
 
-    override fun onBackPressed() {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
         finish()
-        startActivityForResult(Intent(this, CalendarActivity::class.java), 1)
-        //startActivity(Intent(this, CalendarActivity::class.java))
+        startActivity(intent)
     }
 
-
-
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+        startActivity(Intent(this, MainActivity::class.java))
+        overridePendingTransition(
+            R.anim.slide_in_left,
+            R.anim.slide_out_right
+        )
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

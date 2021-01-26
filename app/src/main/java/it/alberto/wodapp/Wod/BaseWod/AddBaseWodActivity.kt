@@ -39,6 +39,7 @@ class AddBaseWodActivity : AppCompatActivity() {
 
             val result_ed = ed_add_result.text.toString()
             if (InputCheck().inputResult(result_ed)) {
+
                 val myDB = DatabaseHelper(this)
                 name = ed_add_name.text.toString().trim { it <= ' ' }
                 type = ed_add_type.text.toString().trim { it <= ' ' }
@@ -46,10 +47,16 @@ class AddBaseWodActivity : AppCompatActivity() {
                 exercises = ed_add_ex.text.toString().trim { it <= ' ' }
                 result = ed_add_result.text.toString().trim { it <= ' ' }
                 myDB.add(name, type, date, exercises, result)
+
                 val intent = Intent(this, UserWodActivity::class.java)
                 intent.putExtra("my_date", date)
                 startActivity(intent)
-                onBackPressed()
+
+                finish()
+                overridePendingTransition(
+                    R.anim.slide_in_left,
+                    R.anim.slide_out_right
+                )
             } else {
                 Toast.makeText(this, "Insert result", Toast.LENGTH_SHORT).show()
             }
@@ -79,7 +86,12 @@ class AddBaseWodActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        super.onBackPressed()
         finish()
+        overridePendingTransition(
+            R.anim.slide_in_left,
+            R.anim.slide_out_right
+        )
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -38,6 +38,9 @@ class InfoActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        uid = String()
+        providerId = String()
+
         val user = Firebase.auth.currentUser
         user?.let {
             for (profile in it.providerData) {
@@ -55,7 +58,7 @@ class InfoActivity : AppCompatActivity() {
             mail_txv_insert_google.text = emailG
         } else {
             include_info_google.visibility = View.GONE
-            val uid: String = FirebaseAuth.getInstance().uid.toString()
+            uid = FirebaseAuth.getInstance().uid.toString()
             readSingleData(uid)
         }
 
@@ -63,6 +66,10 @@ class InfoActivity : AppCompatActivity() {
             Logout().logout()
             finish()
             startActivity(Intent(this, MainActivity::class.java))
+            overridePendingTransition(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left
+            )
         }
 
         btn_delete.setOnClickListener {
@@ -77,6 +84,11 @@ class InfoActivity : AppCompatActivity() {
             Logout().logout()
             finish()
             startActivity(Intent(this, MainActivity::class.java))
+            overridePendingTransition(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left
+            )
+
         }
     }
 
@@ -104,12 +116,13 @@ class InfoActivity : AppCompatActivity() {
         builder.setPositiveButton("Yes"
         ) { _, _ ->
             val myDB = DatabaseHelper(this)
+            Logout().logout()
             myDB.deleteAllData()
             FirebaseDatabaseHelper().deleteData(uid)
+
             //Refresh Activity
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
             finish()
+            startActivity(Intent(this, Login::class.java))
         }
         builder.setNegativeButton("No"
         ) { _, _ -> }
@@ -133,8 +146,9 @@ class InfoActivity : AppCompatActivity() {
                         Log.d(ContentValues.TAG, "User account deleted.")
                     }
                 }
-            startActivity(Intent(this, MainActivity::class.java))
             finish()
+            startActivity(Intent(this, Login::class.java))
+
         }
         builder.setNegativeButton("No"
         ) { _, _ -> }
@@ -142,7 +156,12 @@ class InfoActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        finish()
+        super.onBackPressed()
+        startActivity(Intent(this, MainActivity::class.java))
+        overridePendingTransition(
+            R.anim.slide_in_left,
+            R.anim.slide_out_right
+        )
     }
 
     override fun onSupportNavigateUp(): Boolean {

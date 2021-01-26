@@ -9,6 +9,7 @@ import android.os.CountDownTimer
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import it.alberto.wodapp.MainActivity
 import it.alberto.wodapp.R
 import it.alberto.wodapp.Utility.Timer.util.NotificationUtil
 import it.alberto.wodapp.Utility.Timer.util.PrefUtil
@@ -197,17 +198,19 @@ class TimerActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+        startActivity(Intent(this, MainActivity::class.java))
+        overridePendingTransition(
+            R.anim.slide_in_left,
+            R.anim.slide_out_right
+        )
+    }
+
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
-    }
-
-    override fun onStart() {
-        super.onStart()
-        overridePendingTransition(
-            R.anim.slide_in_right,
-            R.anim.slide_out_left
-        )
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

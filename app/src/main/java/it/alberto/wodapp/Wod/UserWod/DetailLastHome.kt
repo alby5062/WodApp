@@ -79,10 +79,6 @@ class DetailLastHome : AppCompatActivity() {
         }
     }
 
-    override fun onBackPressed() {
-        finish()
-    }
-
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true

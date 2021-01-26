@@ -32,7 +32,6 @@ class AddUserWodActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListe
 
         val picker = findViewById<View>(R.id.datePicker) as DatePicker
         val date = picker.dayOfMonth.toString() + "/" + (picker.month + 1).toString() + "/" + picker.year
-        val intent = Intent(this, UserWodActivity::class.java)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -42,7 +41,6 @@ class AddUserWodActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListe
 
 
         btn_add_wod.setOnClickListener{
-            intent.putExtra("my_date", date)
             var listEx = ""
 
             for (i in exerciseList.indices){
@@ -62,7 +60,6 @@ class AddUserWodActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListe
                     listEx.trim {it <= ' '},
                     result.trim { it <= ' ' }
                 )
-                startActivity(intent)
                 onBackPressed()
             } else {
                 Toast.makeText(this, "Insert all data.", Toast.LENGTH_SHORT).show()
@@ -83,15 +80,10 @@ class AddUserWodActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListe
         }
     }
 
-    private fun lastUsed(){
-        val my_date: String? = intent.getStringExtra("my_date")
-        val intent = Intent(this, UserWodActivity::class.java)
-        intent.putExtra("my_date", my_date)
-        startActivity(intent)
-    }
-
     override fun onBackPressed() {
-        lastUsed()
+        super.onBackPressed()
+        val intent = Intent(this, UserWodActivity::class.java)
+        setResult(1, intent)
         finish()
         overridePendingTransition(
             R.anim.slide_in_left,
@@ -111,19 +103,3 @@ class AddUserWodActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListe
 
     override fun onDeleteClick(position: Int) {}
 }
-
-/*override fun onStart() {
-  super.onStart()
-  overridePendingTransition(
-      R.anim.slide_in_right,
-      R.anim.slide_out_left
-  )
-}
-
-override fun onBackPressed() {
-  super.onBackPressed()
-  overridePendingTransition(
-          R.anim.slide_in_left,
-          R.anim.slide_out_right
-  )
-}*/

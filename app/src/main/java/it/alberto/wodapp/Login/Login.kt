@@ -59,13 +59,23 @@ class Login : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         // GOOGLE LOGIN BUTTON
-        sign_in_button.setOnClickListener { signIn() }
+        sign_in_button.setOnClickListener {
+            signIn()
+
+
+            //onBackPressed()
+        }
 
         // EMAIL LOGIN BUTTON
-        login_button.setOnClickListener { loginEmail() }
+        login_button.setOnClickListener {
+            loginEmail()
+
+        }
 
         // SIGN UP BUTTON
-        sign_up_button.setOnClickListener{ createEmailId() }
+        sign_up_button.setOnClickListener{
+            createEmailId()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -96,6 +106,7 @@ class Login : AppCompatActivity() {
                 //val intent= Intent(this, Logout::class.java)
                 //startActivity(intent)
                 moveNextPage()
+
             }
         }
     }
@@ -115,15 +126,17 @@ class Login : AppCompatActivity() {
 
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
+
                     if (task.isSuccessful) {
-                        moveNextPage()
+
+                        onBackPressed()
                         println("Success")
 
                     } else {
                         Toast.makeText(
-                                applicationContext,
-                                "Failed. Wrong email - password",
-                                Toast.LENGTH_SHORT
+                            applicationContext,
+                            "Failed. Wrong email - password",
+                            Toast.LENGTH_SHORT
                         ).show()
                     }
                 }
@@ -132,27 +145,21 @@ class Login : AppCompatActivity() {
         }
     }
 
-    override fun onBackPressed() {
-        finish()
-        overridePendingTransition(
-            R.anim.slide_in_left,
-            R.anim.slide_out_right
-        )
-    }
-
-    override fun onStart() {
-        super.onStart()
-        overridePendingTransition(
-            R.anim.slide_in_right,
-            R.anim.slide_out_left
-        )
-    }
-
     private fun moveNextPage(){
         var currentUser = FirebaseAuth.getInstance().currentUser
         if(currentUser != null){
             startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this, MainActivity::class.java))
+        overridePendingTransition(
+            R.anim.slide_in_left,
+            R.anim.slide_out_right
+        )
     }
 
     override fun onSupportNavigateUp(): Boolean {

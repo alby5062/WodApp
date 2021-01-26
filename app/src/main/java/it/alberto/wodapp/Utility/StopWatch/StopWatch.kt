@@ -1,5 +1,6 @@
 package it.alberto.wodapp.Utility.StopWatch
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.SystemClock
@@ -10,6 +11,7 @@ import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import it.alberto.wodapp.MainActivity
 import it.alberto.wodapp.R
 
 
@@ -110,18 +112,12 @@ class StopWatch : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        super.onBackPressed()
         finish()
+        startActivity(Intent(this, MainActivity::class.java))
         overridePendingTransition(
             R.anim.slide_in_left,
             R.anim.slide_out_right
-        )
-    }
-
-    override fun onStart() {
-        super.onStart()
-        overridePendingTransition(
-            R.anim.slide_in_right,
-            R.anim.slide_out_left
         )
     }
 

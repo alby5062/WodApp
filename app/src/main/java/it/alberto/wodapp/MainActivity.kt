@@ -74,22 +74,41 @@ class MainActivity : AppCompatActivity() {
         }
 
         include_stop_watch.setOnClickListener {
+            finish()
             startActivity(Intent(this, StopWatch::class.java))
+            overridePendingTransition(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left
+            )
         }
 
         include_timer.setOnClickListener {
+            finish()
             startActivity(Intent(this, TimerActivity::class.java))
+            overridePendingTransition(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left
+            )
         }
 
         val add: FloatingActionButton = findViewById(R.id.add)
         add.setOnClickListener {
+            finish()
             this.startActivity(Intent(this, BaseWodActivity::class.java))
+            overridePendingTransition(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left
+            )
         }
 
         val history: FloatingActionButton = findViewById(R.id.history_button)
         history.setOnClickListener {
-            this.startActivity(Intent(this, CalendarActivity::class.java))
             finish()
+            this.startActivity(Intent(this, CalendarActivity::class.java))
+            overridePendingTransition(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left
+            )
         }
 
         include_last.setOnClickListener {
@@ -131,20 +150,34 @@ class MainActivity : AppCompatActivity() {
 
         R.id.action_logged -> {
             // User chose the "Settings" item, show the app settings UI...
+            finish()
             this.startActivity(Intent(this, InfoActivity::class.java))
+            overridePendingTransition(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left
+            )
             true
         }
 
         R.id.action_login -> {
             // User chose the "Settings" item, show the app settings UI...
+            finish()
             this.startActivity(Intent(this, Login::class.java))
+            overridePendingTransition(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left
+            )
             true
         }
 
         R.id.action_logout_menu -> {
-            //this.startActivity(Intent(this, Logout::class.java))
             Logout().logout()
-            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+            startActivity(intent)
+            overridePendingTransition(
+                R.anim.fade_in,
+                R.anim.fade_out
+            )
             true
         }
         else -> {
@@ -152,6 +185,13 @@ class MainActivity : AppCompatActivity() {
             // Invoke the superclass to handle it.
             super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        println("AOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+        finish()
+        startActivity(intent)
     }
 
     override fun onBackPressed() {

@@ -44,14 +44,22 @@ class CalendarActivity : AppCompatActivity() {
             val intent = Intent(this, UserWodActivity::class.java)
             intent.putExtra("my_date", date)
             startActivity(intent)
+            overridePendingTransition(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left
+            )
             finish()
         }
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        startActivity(Intent(this, MainActivity::class.java))
         finish()
+        startActivity(Intent(this, MainActivity::class.java))
+        overridePendingTransition(
+            R.anim.slide_in_left,
+            R.anim.slide_out_right
+        )
     }
 
     override fun onSupportNavigateUp(): Boolean {

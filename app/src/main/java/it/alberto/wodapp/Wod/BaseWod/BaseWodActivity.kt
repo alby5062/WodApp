@@ -37,6 +37,10 @@ class BaseWodActivity : AppCompatActivity() {
         btn_add.setOnClickListener{
             finish()
             startActivity(Intent(this, AddUserWodActivity::class.java))
+            overridePendingTransition(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left
+            )
         }
 
         myDB = DatabaseHelper(this)
@@ -83,12 +87,18 @@ class BaseWodActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        super.onBackPressed()
         finish()
+        startActivity(Intent(Intent(this, MainActivity::class.java)))
+        overridePendingTransition(
+            R.anim.slide_in_left,
+            R.anim.slide_out_right
+        )
     }
+
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
-        //startActivity(Intent(this, MainActivity::class.java))
         return true
     }
 }
