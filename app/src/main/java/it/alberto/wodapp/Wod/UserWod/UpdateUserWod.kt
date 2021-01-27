@@ -1,9 +1,11 @@
 package it.alberto.wodapp.Wod.UserWod
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -21,6 +23,7 @@ class UpdateUserWod : AppCompatActivity() {
     private lateinit var exercises: String
     private lateinit var result: String
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.update_user_wod)
@@ -46,6 +49,13 @@ class UpdateUserWod : AppCompatActivity() {
 
         btn_delete_wod.setOnClickListener{
             confirmDialog()
+        }
+
+        constraint_update_user.setOnTouchListener{ _, _ ->
+            val imm: InputMethodManager =
+                getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+            true
         }
     }
 

@@ -63,7 +63,9 @@ class BaseWodActivity : AppCompatActivity() {
         if (requestCode == 1) {
             finish()
             startActivity(Intent(this, MainActivity::class.java))
-            //recreate()
+        }
+        if (requestCode == 2){
+            recreate()
         }
     }
 

@@ -49,6 +49,9 @@ class MainActivity : AppCompatActivity() {
                     .setAction("Action", null).show()
         }*/
 
+
+
+
         myDB = DatabaseHelper(this)
         id = String()
         name = String()

@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Wod.BaseWod.AddBaseWodActivity">
+    tools:context=".Wod.BaseWod.AddBaseWodActivity"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:id="@+id/constraint_add_base">
 
     <EditText
         android:id="@+id/ed_add_name"
@@ -13,7 +17,7 @@
         android:layout_marginTop="88dp"
         android:ems="10"
         android:hint="  Name"
-        android:inputType="textPersonName"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +30,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="  Type"
-        android:inputType="textPersonName"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,7 +79,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="  Rounds/Time"
-        android:inputType="textPersonName"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

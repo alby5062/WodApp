@@ -1,9 +1,11 @@
 package it.alberto.wodapp.Wod.BaseWod
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -25,6 +27,7 @@ class AddBaseWodActivity : AppCompatActivity() {
     private lateinit var result: String
 
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_base_wod)
@@ -32,7 +35,6 @@ class AddBaseWodActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val picker = findViewById<View>(R.id.datePicker) as DatePicker
-        val date_pik = picker.dayOfMonth.toString() + "/" + (picker.month + 1).toString() + "/" + picker.year
 
         getAndSetIntentData()
 
@@ -40,6 +42,8 @@ class AddBaseWodActivity : AppCompatActivity() {
 
             val result_ed = ed_add_result.text.toString()
             if (InputCheck().inputResult(result_ed)) {
+
+                val date_pik = picker.dayOfMonth.toString() + "/" + (picker.month + 1).toString() + "/" + picker.year
 
                 val myDB = DatabaseHelper(this)
                 name = ed_add_name.text.toString().trim { it <= ' ' }
@@ -60,6 +64,13 @@ class AddBaseWodActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Insert result", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        constraint_add_base.setOnTouchListener{ _, _ ->
+            val imm: InputMethodManager =
+                getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+            true
         }
     }
 
@@ -87,7 +98,11 @@ class AddBaseWodActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
+        val intent = Intent(this, BaseWodActivity::class.java)
+        setResult(2, intent)
         finish()
+
+        //startActivity(Intent(this, BaseWodActivity::class.java))
         overridePendingTransition(
             R.anim.slide_in_left,
             R.anim.slide_out_right

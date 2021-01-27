@@ -1,8 +1,10 @@
 package it.alberto.wodapp.Wod.BaseWod
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -24,22 +26,20 @@ class AddBaseToUser : AppCompatActivity(), ExerciseAdapter.OnItemClickListener {
     private lateinit var name: String
     private lateinit var type: String
     private lateinit var result: String
+    private lateinit var date: String
 
-
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_base_to_user)
 
-
         val picker = findViewById<View>(R.id.datePicker) as DatePicker
-        val date = picker.dayOfMonth.toString() + "/" + (picker.month + 1).toString() + "/" + picker.year
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         recycler_view_exercise.adapter = adapter
         recycler_view_exercise.layoutManager = LinearLayoutManager(this)
         recycler_view_exercise.setHasFixedSize(true)
-
 
         btn_add_wod.setOnClickListener{
             var listEx = ""
@@ -51,6 +51,7 @@ class AddBaseToUser : AppCompatActivity(), ExerciseAdapter.OnItemClickListener {
             name = ed_add_name.text.toString()
             type = ed_add_type.text.toString()
             result = ed_add_result.text.toString()
+            date = picker.dayOfMonth.toString() + "/" + (picker.month + 1).toString() + "/" + picker.year
 
             if (InputCheck().inputWorkout(name, type, result)){
                 val myDB = DatabaseHelper(this)
@@ -74,6 +75,13 @@ class AddBaseToUser : AppCompatActivity(), ExerciseAdapter.OnItemClickListener {
                 Toast.makeText(this, "Insert all data.", Toast.LENGTH_SHORT).show()
             }
         }
+
+        constraint_add_base_to_user.setOnTouchListener{ _, _ ->
+            val imm: InputMethodManager =
+                getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+            true
+        }
     }
 
     fun insertItemExercise(view: View){
@@ -84,6 +92,12 @@ class AddBaseToUser : AppCompatActivity(), ExerciseAdapter.OnItemClickListener {
             exerciseList.add(index, newItem)
             adapter.notifyItemRemoved(index)
             insert_ex.text.clear()
+
+            val imm: InputMethodManager =
+                getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+            true
+
         } else {
             Toast.makeText(this, "No exercise.", Toast.LENGTH_SHORT).show()
         }

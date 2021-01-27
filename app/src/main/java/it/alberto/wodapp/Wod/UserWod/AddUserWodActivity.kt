@@ -1,14 +1,14 @@
 package it.alberto.wodapp.Wod.UserWod
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.common.base.MoreObjects
 import it.alberto.wodapp.Database.DatabaseHelper
 import it.alberto.wodapp.InputCheck
 import it.alberto.wodapp.R
@@ -24,14 +24,16 @@ class AddUserWodActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListe
     private val adapter = ExerciseAdapter(exerciseList, this)
     private lateinit var name: String
     private lateinit var type: String
+    private lateinit var date: String
     private lateinit var result: String
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_user_wod)
 
         val picker = findViewById<View>(R.id.datePicker) as DatePicker
-        val date = picker.dayOfMonth.toString() + "/" + (picker.month + 1).toString() + "/" + picker.year
+        date = picker.dayOfMonth.toString() + "/" + (picker.month + 1).toString() + "/" + picker.year
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -50,6 +52,7 @@ class AddUserWodActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListe
             name = ed_add_name.text.toString()
             type = ed_add_type.text.toString()
             result = ed_add_result.text.toString()
+            date = picker.dayOfMonth.toString() + "/" + (picker.month + 1).toString() + "/" + picker.year
 
             if (InputCheck().inputWorkout(name, type, result)){
                 val myDB = DatabaseHelper(this)
@@ -57,13 +60,20 @@ class AddUserWodActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListe
                     name.trim { it <= ' ' },
                     type.trim { it <= ' ' },
                     date.trim { it <= ' ' },
-                    listEx.trim {it <= ' '},
+                    listEx.trim { it <= ' ' },
                     result.trim { it <= ' ' }
                 )
                 onBackPressed()
             } else {
                 Toast.makeText(this, "Insert all data.", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        constraint_add_user.setOnTouchListener{ _, _ ->
+            val imm: InputMethodManager =
+                getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+            true
         }
     }
 
@@ -75,6 +85,12 @@ class AddUserWodActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListe
             exerciseList.add(index, newItem)
             adapter.notifyItemRemoved(index)
             insert_ex.text.clear()
+
+            val imm: InputMethodManager =
+                getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+            true
+
         } else {
             Toast.makeText(this, "No exercise.", Toast.LENGTH_SHORT).show()
         }
