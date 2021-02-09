@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -49,9 +50,6 @@ class MainActivity : AppCompatActivity() {
                     .setAction("Action", null).show()
         }*/
 
-
-
-
         myDB = DatabaseHelper(this)
         id = String()
         name = String()
@@ -69,30 +67,36 @@ class MainActivity : AppCompatActivity() {
         userLogged = FirebaseAuth.getInstance().currentUser
 
         if (userLogged != null){
-            include_stop_watch.visibility = View.VISIBLE
-            include_timer.visibility = View.VISIBLE
+
+            include_stop_watch.setOnClickListener {
+                finish()
+                startActivity(Intent(this, StopWatch::class.java))
+                overridePendingTransition(
+                    R.anim.slide_in_right,
+                    R.anim.slide_out_left
+                )
+            }
+
+            include_timer.setOnClickListener {
+                finish()
+                startActivity(Intent(this, TimerActivity::class.java))
+                overridePendingTransition(
+                    R.anim.slide_in_right,
+                    R.anim.slide_out_left
+                )
+            }
         } else {
-            include_stop_watch.visibility = View.GONE
-            include_timer.visibility = View.GONE
+
+            include_stop_watch.setOnClickListener {
+                Toast.makeText(this, "To use this feature please login in your account", Toast.LENGTH_SHORT).show()
+            }
+
+            include_timer.setOnClickListener {
+                Toast.makeText(this, "To use this feature please login in your account", Toast.LENGTH_SHORT).show()
+            }
         }
 
-        include_stop_watch.setOnClickListener {
-            finish()
-            startActivity(Intent(this, StopWatch::class.java))
-            overridePendingTransition(
-                R.anim.slide_in_right,
-                R.anim.slide_out_left
-            )
-        }
 
-        include_timer.setOnClickListener {
-            finish()
-            startActivity(Intent(this, TimerActivity::class.java))
-            overridePendingTransition(
-                R.anim.slide_in_right,
-                R.anim.slide_out_left
-            )
-        }
 
         val add: FloatingActionButton = findViewById(R.id.add)
         add.setOnClickListener {

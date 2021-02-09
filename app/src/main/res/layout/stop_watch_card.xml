@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/stop_watch_image"
-            android:layout_width="88dp"
-            android:layout_height="98dp"
+            android:layout_width="72dp"
+            android:layout_height="71dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,8 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Stop-Watch"
-            android:textStyle="bold"
-            android:textSize="35sp"
+            android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"

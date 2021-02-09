@@ -51,14 +51,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
+
     <include
         android:id="@+id/include_timer"
         layout="@layout/timer_card"
         android:layout_width="wrap_content"
-        app:layout_constraintHorizontal_weight="0.5"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="264dp"
+        android:layout_marginTop="280dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.156"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
@@ -67,7 +68,7 @@
         layout="@layout/stop_watch_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/include_timer"
         app:layout_constraintTop_toTopOf="@+id/include_timer" />
 

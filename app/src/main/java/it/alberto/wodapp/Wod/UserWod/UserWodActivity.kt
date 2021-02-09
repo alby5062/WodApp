@@ -96,11 +96,13 @@ class UserWodActivity : AppCompatActivity() {
     private fun confirmDialog() {
         val builder: AlertDialog.Builder = AlertDialog.Builder(this)
         builder.setTitle("Delete All?")
-        builder.setMessage("Are you sure you want to delete all Data?")
+        builder.setMessage("Are you sure you want to delete all workouts of this day?")
         builder.setPositiveButton("Yes"
         ) { _, _ ->
             val myDB = DatabaseHelper(this)
-            myDB.deleteAllData()
+            val cazzo = intent.getStringExtra("my_date")
+            println(cazzo)
+            myDB.deleteOnlyDate(cazzo)
             //Refresh Activity
             finish()
             startActivity(intent)

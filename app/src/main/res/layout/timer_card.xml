@@ -12,12 +12,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+        android:layout_marginVertical="8dp"
+        android:layout_marginHorizontal="35dp">
 
         <ImageView
             android:id="@+id/timer_image"
-            android:layout_width="88dp"
-            android:layout_height="98dp"
+            android:layout_width="72dp"
+            android:layout_height="71dp"
             android:src="@drawable/ic_timer_3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -29,8 +30,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Timer"
-            android:textSize="35sp"
-            android:textStyle="bold"
+            android:textSize="25sp"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"

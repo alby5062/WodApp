@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: me.zhanghai.android.materialprogressbar:library:1.6.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c5093b08ecb23c0658a2438539592bca/jetified-library-1.6.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c5093b08ecb23c0658a2438539592bca/jetified-library-1.6.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c5093b08ecb23c0658a2438539592bca/jetified-library-1.6.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3aabefc8a3d8e0ec68edb89782f7945b/jetified-library-1.6.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3aabefc8a3d8e0ec68edb89782f7945b/jetified-library-1.6.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3aabefc8a3d8e0ec68edb89782f7945b/jetified-library-1.6.1/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.zhanghai.android.materialprogressbar/library/1.6.1/63529869eb790d8abc8e1a0d04513923cca32b16/library-1.6.1-javadoc.jar!/" />

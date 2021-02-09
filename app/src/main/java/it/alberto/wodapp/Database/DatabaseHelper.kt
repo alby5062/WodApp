@@ -104,7 +104,11 @@ class DatabaseHelper(private val context: Context?) : SQLiteAssetHelper(context,
         return DatabaseUtils.longForQuery(db, query, null).toInt()
     }
 
-
+    fun deleteOnlyDate(my_date: String?){
+        val db = this.writableDatabase
+        val query = "DELETE FROM $TABLE_NAME_1 WHERE date LIKE '%$my_date%' "
+        db.execSQL(query)
+    }
 
     companion object {
         private const val DATABASE_NAME = "wod_database.db"

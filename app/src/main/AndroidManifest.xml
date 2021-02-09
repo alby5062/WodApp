@@ -25,6 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <!-- BASE WOD ACTIVITY -->
         <activity
             android:name=".Wod.BaseWod.BaseWodActivity"
@@ -34,6 +35,7 @@
             android:label="Set your workout" />
         <activity android:name=".Wod.BaseWod.AddBaseToUser"
             android:label="Set your workout"/>
+
         <!-- USER WOD ACTIVITY -->
         <activity
             android:name=".Wod.UserWod.UserWodActivity"
