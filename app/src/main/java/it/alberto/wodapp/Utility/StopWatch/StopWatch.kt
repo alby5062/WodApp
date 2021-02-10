@@ -65,6 +65,7 @@ class StopWatch : AppCompatActivity() {
             StartTime = SystemClock.uptimeMillis()
             handler!!.postDelayed(runnable, 0)
             reset.isEnabled = false
+            start.isEnabled = false
         }
 
         pause.setOnClickListener{
@@ -84,6 +85,7 @@ class StopWatch : AppCompatActivity() {
             textView.text = "00:00:00"
             ListElementsArrayList!!.clear()
             adapter!!.notifyDataSetChanged()
+            start.isEnabled = true
         }
 
         lap.setOnClickListener{
