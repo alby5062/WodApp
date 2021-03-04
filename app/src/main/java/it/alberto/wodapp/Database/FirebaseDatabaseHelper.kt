@@ -2,6 +2,7 @@ package it.alberto.wodapp.Database
 
 import android.content.ContentValues.TAG
 import android.util.Log
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase

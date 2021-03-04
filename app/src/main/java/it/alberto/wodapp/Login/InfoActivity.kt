@@ -41,6 +41,8 @@ class InfoActivity : AppCompatActivity() {
         uid = String()
         providerId = String()
 
+
+
         val user = Firebase.auth.currentUser
         user?.let {
             for (profile in it.providerData) {
@@ -116,9 +118,10 @@ class InfoActivity : AppCompatActivity() {
         builder.setPositiveButton("Yes"
         ) { _, _ ->
             val myDB = DatabaseHelper(this)
-            Logout().logout()
             myDB.deleteAllData()
+            println(uid)
             FirebaseDatabaseHelper().deleteData(uid)
+            //Logout().logout()
 
             //Refresh Activity
             finish()
